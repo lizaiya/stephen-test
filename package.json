@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/lizaiya/stephen-test/issues"
   },
-  "homepage": "https://github.com/lizaiya/stephen-test#readme"
+  "homepage": "https://github.com/lizaiya/stephen-test#readme",
+  "dependencies": {
+    "vue": "^2.6.7"
+  }
 }
