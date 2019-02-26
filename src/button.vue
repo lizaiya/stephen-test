@@ -2,7 +2,7 @@
   <!-- <button class="s-button" :class="{[`icon-${iconPosition}`]:true}"> -->
   <!-- 自定义 -->
   <button class="s-button" :class="`icon-${iconPosition}`">
-    <s-icon :name="icon" v-if="icon"></s-icon>
+    <s-icon class="icon" :name="icon" v-if="icon"></s-icon>
     <div class="content">
       <slot></slot>
     </div>
