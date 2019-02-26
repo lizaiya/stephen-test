@@ -2,9 +2,7 @@
   <!-- <button class="s-button" :class="{[`icon-${iconPosition}`]:true}"> -->
   <!-- 自定义 -->
   <button class="s-button" :class="`icon-${iconPosition}`">
-    <svg class="icon" aria-hidden="true" v-if="icon">
-      <use :xlink:href="`#i-${icon}`"></use>
-    </svg>
+    <s-icon :name="icon" v-if="icon"></s-icon>
     <div class="content">
       <slot></slot>
     </div>
