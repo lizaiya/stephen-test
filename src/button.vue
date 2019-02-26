@@ -12,7 +12,24 @@
 </template>
 <script>
 export default {
-  props:['icon','iconPosition']//left or right
+  //props:['icon','iconPosition']//left or right
+  props:{
+    icon:{},
+    iconPosition:{
+      type:String,
+      default:'left',
+      //属性检查器
+      validator(value){
+        return value ==='left' || value ==='right';
+        // return !(value !=='left'&& value !=='right');
+        // if(value!=='left' && value!=='right'){
+        //   return false;
+        // }
+        // return true;
+      }
+    }
+  }
+  
 };
 </script>
 <style lang="scss" >
@@ -25,9 +42,10 @@ export default {
   border: 1px solid var(--border-color);
   background: var(--button-bg);
   display: inline-flex;
-  vertical-align: middle;
+ 
   justify-content: center;
-  align-content: center;
+  align-items: center;
+   vertical-align: middle;
   &:hover {border-color: var(--border-hover-color);}
   &:active {background: var(--button-active-bg);}
   &:focus {outline: none;}
