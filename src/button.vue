@@ -2,7 +2,9 @@
   <!-- <button class="s-button" :class="{[`icon-${iconPosition}`]:true}"> -->
   <!-- 自定义 -->
   <button class="s-button" :class="`icon-${iconPosition}`">
+    <s-icon class="loading" name="loading" ></s-icon>
     <s-icon class="icon" :name="icon" v-if="icon"></s-icon>
+   
     <div class="content">
       <slot></slot>
     </div>
@@ -31,6 +33,14 @@ export default {
 };
 </script>
 <style lang="scss" >
+@keyframes spin{
+  0%{
+    transform:rotate(0deg);
+  }
+  100%{
+    transform:rotate(360deg);
+  }
+}
 .s-button {
   font-size: var(--font-size);
   height: var(--button-height);
@@ -52,6 +62,9 @@ export default {
   &.icon-right {
     >.content{order:1;}
     >.icon{order:2;margin:0 0 0 .3em; }
+  }
+  .loading{
+    animation: spin 1s linear infinite;
   }
 }
 </style>
