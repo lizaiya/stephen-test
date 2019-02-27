@@ -21,7 +21,7 @@
             --border-radius: 4px;
             --color: #333;
             --border-color: #999;
-            --border-hover-color: #666;
+            --border-hover-color: red;
         }
 
         #app {
@@ -43,6 +43,11 @@
         <s-button icon="settings" :loading="loading2" @click="loading2=!loading2">按钮</s-button>
         <s-button icon="settings" icon-position="right" :loading="loading3" @click="loading3=!loading3">按钮</s-button>
         <s-icon name="download"></s-icon>
+        <s-button-group>
+            <s-button icon="left">上一页</s-button>
+            <s-button icon="left">更多</s-button>
+            <s-button icon="right" icon-position="right">下一页</s-button>
+        </s-button-group>
         <!-- <s-button icon="settings" icon-position="up">按钮</s-button> -->
     </div>
     <script src="./src/app.js"></script>

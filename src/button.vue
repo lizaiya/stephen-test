@@ -52,7 +52,6 @@ export default {
   border: 1px solid var(--border-color);
   background: var(--button-bg);
   display: inline-flex;
-
   justify-content: center;
   align-items: center;
   vertical-align: middle;
