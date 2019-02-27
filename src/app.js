@@ -5,8 +5,7 @@
  Vue.component('s-button', Button)
  Vue.component('s-icon', Icon)
  Vue.component('s-button-group', ButtonGroup)
- import chai from 'chai';
- const expect = chai.expect;
+
  new Vue({
      el: '#app',
      data: {
@@ -16,6 +15,10 @@
      }
 
  });
+ import chai from 'chai';
+ const expect = chai.expect;
+ import spies from 'chai-spies';
+ chai.use(spies);
  //单元测试
  {
 
@@ -99,6 +102,7 @@
      vm.$el.remove();
      vm.$destroy();
  } {
+     //mock
      const Constructor = Vue.extend(Button);
      const vm = new Constructor({
          propsData: {
@@ -107,10 +111,11 @@
          }
      });
      vm.$mount();
-     vm.$on('click', function() {
-         console.log('111')
-     })
+     //间谍函数
+     let spy = chai.spy(function() {});
+     vm.$on('click', spy);
      let button = vm.$el;
      button.click();
-
+     //期待间谍函数被调用
+     expect(spy).to.have.been.called();
  }
