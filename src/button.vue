@@ -1,7 +1,7 @@
 <template>
   <!-- <button class="s-button" :class="{[`icon-${iconPosition}`]:true}"> -->
   <!-- 自定义 -->
-  <button class="s-button" :class="`icon-${iconPosition}`" @click="$emit('click')">
+  <button class="s-button  lizaiya" :class="`icon-${iconPosition}`" @click="$emit('click')">
     <s-icon class="icon" :name="icon" v-if="icon&&!loading"></s-icon>
     <s-icon class="loading icon" name="loading" v-if="loading"></s-icon>
     <div class="content">
