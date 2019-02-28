@@ -10,8 +10,11 @@
   </button>
 </template>
 <script>
+import Icon from "./icon.vue";
 export default {
-  //props:['icon','iconPosition']//left or right
+  components: {
+    "s-icon": Icon
+  },
   props: {
     icon: {},
     loading: {
@@ -24,11 +27,6 @@ export default {
       //属性检查器
       validator(value) {
         return value === "left" || value === "right";
-        // return !(value !=='left'&& value !=='right');
-        // if(value!=='left' && value!=='right'){
-        //   return false;
-        // }
-        // return true;
       }
     }
   }
