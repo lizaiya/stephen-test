@@ -49,14 +49,17 @@
 
 <body>
     <div id="app">
-        <!-- <div class="box">
+        <div class="box">
             <s-input placeholder="提示" value="张三" disabled></s-input>
             <s-input placeholder="提示" value="张三" :readonly="true"></s-input>
-        </div> -->
+        </div>
         <div class="box">
-
-            <!-- <s-input placeholder="提示" value="李四" error="姓名不能少于两个字"></s-input> -->
-            <s-input placeholder="提示" value="王五" @change="inputChange"></s-input>
+            <s-input placeholder="提示" value="李四" error="姓名不能少于两个字"></s-input>
+            <s-input placeholder="提示" value="王五" @change="inputChange" v-model="message"
+            @input="inputEvent"
+            ></s-input>
+            <p>{{message}}</p>
+            <s-button @click="message+=1">+1</s-button>
         </div>
         <div class="box">
             <s-button icon="settings" icon-position="left" :loading="loading1" @click="loading1=!loading1">按钮</s-button>

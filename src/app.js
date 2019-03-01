@@ -14,12 +14,15 @@
          loading1: false,
          loading2: false,
          loading3: false,
+         message:'双向绑定'
      },
      
      methods:{
-        inputChange(e){
-            console.log(123)
-            console.log(e.target.value)
+        inputChange(value){
+            console.log('inputChange事件',value)
+        },
+        inputEvent(value){
+            console.log('input事件',value)
         }
      }
 
