@@ -4,17 +4,20 @@ import Button from '../src/button'
 
 Vue.config.productionTip = false
 Vue.config.devtools = false
-
+//7个测试用例
 describe('Button', () => {
+    const Constructor = Vue.extend(Button)
     //BDD 行为驱动开发 Mocha  断言使用chai
     it('存在.', () => {
         expect(Button).to.be.ok;
         expect([1, 2]).to.deep.eq([1, 2])
         //期待拥有属性
-        expect({ a: 1 }).to.have.own.property('a')
+        expect({
+            a: 1
+        }).to.have.own.property('a')
     })
     it('可以设置icon.', () => {
-        const Constructor = Vue.extend(Button)
+        
         const vm = new Constructor({
             propsData: {
                 icon: 'settings'
@@ -25,7 +28,7 @@ describe('Button', () => {
         vm.$destroy()
     })
     it('可以设置loading.', () => {
-        const Constructor = Vue.extend(Button)
+        
         const vm = new Constructor({
             propsData: {
                 icon: 'settings',
@@ -40,7 +43,7 @@ describe('Button', () => {
     it('icon 默认的 order 是 1', () => {
         const div = document.createElement('div')
         document.body.appendChild(div)
-        const Constructor = Vue.extend(Button)
+        
         const vm = new Constructor({
             propsData: {
                 icon: 'settings',
@@ -54,7 +57,7 @@ describe('Button', () => {
     it('设置 iconPosition 可以改变 order', () => {
         const div = document.createElement('div')
         document.body.appendChild(div)
-        const Constructor = Vue.extend(Button)
+        
         const vm = new Constructor({
             propsData: {
                 icon: 'settings',
@@ -69,7 +72,7 @@ describe('Button', () => {
     it('设置 iconPosition 可以改变 order', () => {
         const div = document.createElement('div')
         document.body.appendChild(div)
-        const Constructor = Vue.extend(Button)
+        
         const vm = new Constructor({
             propsData: {
                 icon: 'settings',
@@ -82,7 +85,7 @@ describe('Button', () => {
         vm.$destroy()
     })
     it('点击 button 触发 click 事件', () => {
-        const Constructor = Vue.extend(Button)
+        
         const vm = new Constructor({
             propsData: {
                 icon: 'settings',

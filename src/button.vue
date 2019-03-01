@@ -3,7 +3,7 @@
   <!-- 自定义 -->
   <button class="s-button" :class="`icon-${iconPosition}`" @click="$emit('click')">
     <s-icon class="icon" :name="icon" v-if="icon&&!loading"></s-icon>
-    <s-icon class="loading icon" name="loading" v-else="loading"></s-icon>
+    <s-icon class="loading icon" name="loading" v-else></s-icon>
     <div class="content">
       <slot></slot>
     </div>
