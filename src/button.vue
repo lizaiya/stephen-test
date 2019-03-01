@@ -3,7 +3,7 @@
   <!-- 自定义 -->
   <button class="s-button" :class="`icon-${iconPosition}`" @click="$emit('click')">
     <s-icon class="icon" :name="icon" v-if="icon&&!loading"></s-icon>
-    <s-icon class="loading icon" name="loading" v-if="loading"></s-icon>
+    <s-icon class="loading icon" name="loading" v-else="loading"></s-icon>
     <div class="content">
       <slot></slot>
     </div>
@@ -12,15 +12,20 @@
 <script>
 import Icon from "./icon.vue";
 export default {
+  name: "StephenButton",
   components: {
     "s-icon": Icon
   },
+
   props: {
+    //icon图标
     icon: {},
+    //是否显示loading状态
     loading: {
       type: Boolean,
       default: false
     },
+    //icon放置位置
     iconPosition: {
       type: String,
       default: "left",
@@ -32,7 +37,7 @@ export default {
   }
 };
 </script>
-<style lang="scss" >
+<style lang="scss" scoped>
 @keyframes spin {
   0% {
     transform: rotate(0deg);
