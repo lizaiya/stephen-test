@@ -49,11 +49,10 @@
 
 <body>
     <div id="app">
-        <s-row>
+        <s-row gutter="20">
             <s-col>1</s-col>
-
         </s-row>
-        <s-row>
+        <s-row gutter="20">
             <s-col>1</s-col>
             <s-col>2</s-col>
         </s-row>
@@ -74,7 +73,17 @@
         </s-row>
         <s-row>
             <s-col :span="4">4</s-col>
-            <s-col :span="20">20</s-col>
+            <s-col :span="18" offset="2">18-2</s-col>
+        </s-row>
+        <s-row>
+            <s-col :span="4">4</s-col>
+            <s-col :span="8" offset="2">8-2</s-col>
+            <s-col :span="8" offset="2">8-2</s-col>
+        </s-row>
+        <s-row>
+            <s-col :span="2">4</s-col>
+            <s-col :span="16" offset="2">8-2</s-col>
+            <s-col :span="2" offset="2">8-2</s-col>
         </s-row>
         <div class="box">
             <s-input placeholder="提示" value="张三" disabled></s-input>
