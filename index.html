@@ -49,15 +49,40 @@
 
 <body>
     <div id="app">
+        <s-row>
+            <s-col>1</s-col>
+
+        </s-row>
+        <s-row>
+            <s-col>1</s-col>
+            <s-col>2</s-col>
+        </s-row>
+        <s-row>
+            <s-col>1</s-col>
+            <s-col>2</s-col>
+            <s-col>3</s-col>
+        </s-row>
+        <s-row>
+            <s-col>1</s-col>
+            <s-col>2</s-col>
+            <s-col>3</s-col>
+            <s-col>4</s-col>
+        </s-row>
+        <s-row>
+            <s-col :span="2">2</s-col>
+            <s-col :span="22">24</s-col>
+        </s-row>
+        <s-row>
+            <s-col :span="4">4</s-col>
+            <s-col :span="20">20</s-col>
+        </s-row>
         <div class="box">
             <s-input placeholder="提示" value="张三" disabled></s-input>
             <s-input placeholder="提示" value="张三" :readonly="true"></s-input>
         </div>
         <div class="box">
             <s-input placeholder="提示" value="李四" error="姓名不能少于两个字"></s-input>
-            <s-input placeholder="提示" value="王五" @change="inputChange" v-model="message"
-            @input="inputEvent"
-            ></s-input>
+            <s-input placeholder="提示" value="王五" @change="inputChange" v-model="message" @input="inputEvent"></s-input>
             <p>{{message}}</p>
             <s-button @click="message+=1">+1</s-button>
         </div>
@@ -73,7 +98,6 @@
                 <s-button icon="right" icon-position="right">下一页</s-button>
             </s-button-group>
         </div>
-
     </div>
     <script src="./src/app.js"></script>
 </body>
