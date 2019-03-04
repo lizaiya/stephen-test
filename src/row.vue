@@ -28,7 +28,6 @@ export default {
     },
     rowClasess() {
       let { aligns } = this;
-      console.log(aligns);
       return [`row-${aligns}`];
     }
   },
