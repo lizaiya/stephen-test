@@ -1,5 +1,5 @@
 <template>
-  <div class="row" :style="{marginLeft:-(parseInt(gutter)/2)+'px',marginRight:-(parseInt(gutter)/2)+'px'}">
+  <div class="row" :style="rowStyle" :class="rowClasess">
     <slot></slot>
   </div>
 </template>
@@ -9,14 +9,33 @@ export default {
   props: {
     gutter: {
       type: [Number, String]
+    },
+    aligns: {
+      type: String,
+      default: "left",
+      validator(val) {
+        return ["left", "right", "center"].includes(val);
+      }
+    }
+  },
+  computed: {
+    rowStyle() {
+      let { gutter } = this;
+      return {
+        marginLeft: -(gutter / 2) + "px",
+        marginRight: -(gutter / 2) + "px"
+      };
+    },
+    rowClasess() {
+      let { aligns } = this;
+      console.log(aligns);
+      return [`row-${aligns}`];
     }
   },
   mounted() {
     this.$children.forEach(vm => {
       if (this.gutter) {
-        console.log(this.$children);
         vm.gutter = this.gutter;
-        console.log(vm);
       }
     });
   }
@@ -26,5 +45,15 @@ export default {
 <style lang="scss">
 .row {
   display: flex;
+  flex-wrap: wrap;
+  &-left {
+    justify-content: flex-start;
+  }
+  &-right {
+    justify-content: flex-end;
+  }
+  &-center {
+    justify-content: center;
+  }
 }
 </style>
