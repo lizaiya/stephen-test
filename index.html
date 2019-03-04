@@ -32,74 +32,73 @@
             --border-hover-color: #666;
         }
 
-        #app {
+        /*  #app {
             margin: 20px;
-        }
+        } */
 
         body {
             font-size: var(--font-size);
         }
 
-        .box {
-            margin: 20px 0;
+        .demo {
+            margin-bottom: 10px;
         }
     </style>
 </head>
 
 <body>
-    <script>
-        let str = 'row row-left';
-        console.log(str.includes('row-left'))
-    </script>
     <div id="app">
-        <s-row gutter="20" aligns="left">
-            <!-- <s-col :span="24" :ipad="{span:18}" :narrow-pc="{span:12}" :pc="{span:6}" :wide-pc="{span:1}">1</s-col>
-            <s-col :span="24" :ipad="{span:6}" :narrow-pc="{span:12}" :pc="{span:18}" :wide-pc="{span:23}">2</s-col> -->
-            <!-- <s-col :span="22" offset="2" :ipad="{span:12,offset:4}" :narrow-pc="{span:6,offset:6}" :pc="{span:2,offset:8}" :wide-pc="{span:3,offset:10}">1</s-col>
-            <s-col :span="22" offset="2" :ipad="{span:6,offset:4}" :narrow-pc="{span:6,offset:6}" :pc="{span:6,offset:8}" :wide-pc="{span:1,offset:10}">2</s-col> -->
-            <s-col :narrow-pc="{span:6,offset:4}">1</s-col>
-
-        </s-row>
-        <!-- <s-row gutter="20">
-            <s-col :span="12">
-                <s-row>
-                    <s-col>1</s-col>
-                    <s-col>2</s-col>
-                    <s-col>3</s-col>
-                    <s-col>4</s-col>
-                </s-row>
-            </s-col>
-            <s-col :span="12">
-                <s-row aligns="center">
-                    <s-col>-11</s-col>
-                    <s-col>-22</s-col>
-                    <s-col>-33</s-col>
-                    <s-col>-44</s-col>
-                </s-row>
-            </s-col>
-            <s-col :span="12">
-                <s-row aligns="right">
-                    <s-col>+11</s-col>
-                    <s-col>+22</s-col>
-                    <s-col>+33</s-col>
-                    <s-col>+44</s-col>
-                </s-row>
-            </s-col>
-        </s-row> -->
-        <!-- <s-row>
-            <s-col :span="4">4</s-col>
-            <s-col :span="18" offset="2">18-2</s-col>
-        </s-row>
-        <s-row>
-            <s-col :span="4">4</s-col>
-            <s-col :span="8" offset="2">8-2</s-col>
-            <s-col :span="8" offset="2">8-2</s-col>
-        </s-row>
-        <s-row>
-            <s-col :span="2">4</s-col>
-            <s-col :span="16" offset="2">8-2</s-col>
-            <s-col :span="2" offset="2">8-2</s-col>
-        </s-row> -->
+        <!--   <div class="demo">
+            <s-layout>
+                <s-header>header</s-header>
+                <s-main>mian</s-main>
+                <s-footer>footer</s-footer>
+            </s-layout>
+        </div> -->
+        <!--  <div class="demo">
+            <s-layout>
+                <s-main>main</s-main>
+                <s-footer>footer</s-footer>
+            </s-layout>
+        </div> -->
+        <!-- <div class="demo">
+            <s-layout>
+                <s-aside>aside</s-aside>
+                <s-main>mian</s-main>
+            </s-layout>
+        </div> -->
+        <!-- <div class="demo">
+            <s-header>header</s-header>
+            <s-layout>
+                <s-aside>aside</s-aside>
+                <s-main>mian</s-main>
+            </s-layout>
+        </div> -->
+        <!-- <s-layout>
+            <s-header>header</s-header>
+            <s-layout>
+                <s-aside>aside</s-aside>
+                <s-layout>
+                    <s-main>main</s-main>
+                    <s-footer>footer</s-footer>
+                </s-layout>
+            </s-layout>
+        </s-layout> -->
+        <!-- <s-layout>
+            <s-aside>aside</s-aside>
+            <s-layout>
+                <s-header>header</s-header>
+                <s-main>main</s-main>
+            </s-layout>
+        </s-layout> -->
+        <s-layout>
+                <s-aside>aside</s-aside>
+                <s-layout>
+                    <s-header>header</s-header>
+                    <s-main>main</s-main>
+                    <s-footer>footer</s-footer>
+                </s-layout>
+            </s-layout>
     </div>
     <script src="./src/app.js"></script>
 </body>
