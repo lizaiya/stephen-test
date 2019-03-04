@@ -83,7 +83,6 @@ export default {
   }
 };
 </script>
-
 <style lang="scss" scoped>
 .col {
   height: 100px;

@@ -16,7 +16,6 @@ export default {
   components: {
     "s-icon": Icon
   },
-
   props: {
     //icon图标
     icon: {},
@@ -88,6 +87,3 @@ export default {
   }
 }
 </style>
-
-
-

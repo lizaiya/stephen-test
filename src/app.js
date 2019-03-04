@@ -11,7 +11,6 @@
  Vue.component('s-input', Input)
  Vue.component('s-row', Row)
  Vue.component('s-col', Col)
-
  new Vue({
      el: '#app',
      data: {
@@ -20,7 +19,6 @@
          loading3: false,
          message: '双向绑定'
      },
-
      methods: {
          inputChange(value) {
              console.log('inputChange事件', value)
@@ -29,5 +27,4 @@
              console.log('input事件', value)
          }
      }
-
  });
