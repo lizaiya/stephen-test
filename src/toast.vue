@@ -1,8 +1,9 @@
 <template>
-  <div class="toast-wrap">
+  <div class="toast-wrap" :class="toastClasses">
     <div class="toast" ref="toast">
-      <div class="message">
-        <slot></slot>
+      <div class="message" :style="showBorder">
+        <slot v-if="!enableHtml"></slot>
+        <div v-else v-html="$slots.default[0]"></div>
       </div>
       <div class="close" @click="clickClose" v-if="closeButton" ref="close">
         {{closeButton.text}}
@@ -28,30 +29,43 @@ export default {
         return value === false || typeof value === "number";
       }
     },
+    //是否渲染为html
+    enableHtml: {
+      type: Boolean,
+      default: false
+    },
+    position: {
+      type: String,
+      default: "top",
+      validator(value) {
+        return ["top", "middle", "bottom"].indexOf(value) >= 0;
+      }
+    },
     //按钮 关闭和回调
     closeButton: {
       type: Object,
+
       defalut() {
         return { text: "关闭", callback: undefined };
       }
     }
   },
-  methods: {
-    updateStyle() {
-      this.$nextTick(() => {
-        if (this.$refs.close) {
-          this.$refs.close.style.height = `${
-            this.$refs.toast.getBoundingClientRect().height
-          }px`;
-        }
-      });
+  computed: {
+    showBorder() {
+      return this.closeButton
+        ? { borderRight: "1px solid white" }
+        : { borderRight: "none" };
     },
+    toastClasses() {
+      return { [`position-${this.position}`]: true };
+    }
+  },
+  methods: {
     //关闭 销毁toast
     close() {
       this.$el.remove();
       //用于清除重复的实例
       this.$emit("close");
-
       this.$destroy();
     },
     //根据 autoclose 参数决定怎么关闭
@@ -72,7 +86,6 @@ export default {
   },
   mounted() {
     this.execAutoClose();
-    this.updateStyle();
   }
 };
 </script>
@@ -83,9 +96,26 @@ $toast-min-height: 40px;
 $toast-bg: rgba(0, 0, 0, 0.75);
 .toast-wrap {
   position: fixed;
-  top: 0;
   left: 50%;
   transform: translateX(-50%);
+  &.position-top {
+    top: 0;
+    .toast {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+  }
+  &.position-middle {
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+  &.position-bottom {
+    bottom: 0;
+    .toast {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
   .toast {
     background: $toast-bg;
     box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.5);
@@ -100,23 +130,14 @@ $toast-bg: rgba(0, 0, 0, 0.75);
     .message {
       padding: 8px 12px 8px 8px;
       flex-grow: 1;
+      //   border-right: 1px solid white;
     }
     .close {
       position: relative;
       padding: 8px 8px 8px 12px;
       flex-shrink: 0;
       flex-grow: 0;
-      height: 100%;
       cursor: pointer;
-      &::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 1px;
-        background: white;
-      }
     }
   }
 }

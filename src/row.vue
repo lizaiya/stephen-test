@@ -14,7 +14,7 @@ export default {
       type: String,
       default: "left",
       validator(val) {
-        return ["left", "right", "center"].includes(val);
+        return ["left", "right", "center"].indexOf(val) >= 0;
       }
     }
   },

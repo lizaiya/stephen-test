@@ -39,14 +39,16 @@
              console.log('input事件', value)
          },
          showToast() {
-             this.$toast('toast弹窗', {
-                 autoClose: 1000,
-                 closeButton: {
-                     text: '关闭了',
-                     callback: () => {
-                         console.log('按钮关闭的');
-                     }
-                 },
+             this.$toast(`toast弹窗toast弹窗toast弹窗toast弹窗toast弹窗toast弹窗toast弹窗`, {
+                 autoClose: false,
+                 enableHtml: false,
+                 position: 'top'
+                 //  closeButton: {
+                 //      text: '关闭了',
+                 //      callback: () => {
+                 //          console.log('按钮关闭的');
+                 //      }
+                 //  },
              });
          }
      },

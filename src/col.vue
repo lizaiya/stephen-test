@@ -9,7 +9,7 @@ let validator = value => {
     keys = Object.keys(value);
   //验证只能有span and offset属性
   keys.forEach(key => {
-    if (!["span", "offset"].includes(key)) {
+    if (!["span", "offset"].indexOf(key) >= 0) {
       valid = false;
     }
   });
