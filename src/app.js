@@ -10,6 +10,7 @@
  import Main from './main';
  import Footer from './footer';
  import Aisde from './aside';
+ import plugin from './plugin';
  Vue.component('s-button', Button)
  Vue.component('s-icon', Icon)
  Vue.component('s-button-group', ButtonGroup)
@@ -36,6 +37,19 @@
          },
          inputEvent(value) {
              console.log('input事件', value)
+         },
+         showToast() {
+             this.$toast('toast弹窗', {
+                 autoClose: 1000,
+                 closeButton: {
+                     text: '关闭了',
+                     callback: () => {
+                         console.log('按钮关闭的');
+                     }
+                 },
+             });
          }
-     }
+     },
+
+
  });

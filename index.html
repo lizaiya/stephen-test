@@ -32,9 +32,9 @@
             --border-hover-color: #666;
         }
 
-        /*  #app {
+        #app {
             margin: 20px;
-        } */
+        }
 
         body {
             font-size: var(--font-size);
@@ -48,57 +48,7 @@
 
 <body>
     <div id="app">
-        <!--   <div class="demo">
-            <s-layout>
-                <s-header>header</s-header>
-                <s-main>mian</s-main>
-                <s-footer>footer</s-footer>
-            </s-layout>
-        </div> -->
-        <!--  <div class="demo">
-            <s-layout>
-                <s-main>main</s-main>
-                <s-footer>footer</s-footer>
-            </s-layout>
-        </div> -->
-        <!-- <div class="demo">
-            <s-layout>
-                <s-aside>aside</s-aside>
-                <s-main>mian</s-main>
-            </s-layout>
-        </div> -->
-        <!-- <div class="demo">
-            <s-header>header</s-header>
-            <s-layout>
-                <s-aside>aside</s-aside>
-                <s-main>mian</s-main>
-            </s-layout>
-        </div> -->
-        <!-- <s-layout>
-            <s-header>header</s-header>
-            <s-layout>
-                <s-aside>aside</s-aside>
-                <s-layout>
-                    <s-main>main</s-main>
-                    <s-footer>footer</s-footer>
-                </s-layout>
-            </s-layout>
-        </s-layout> -->
-        <!-- <s-layout>
-            <s-aside>aside</s-aside>
-            <s-layout>
-                <s-header>header</s-header>
-                <s-main>main</s-main>
-            </s-layout>
-        </s-layout> -->
-        <s-layout>
-                <s-aside>aside</s-aside>
-                <s-layout>
-                    <s-header>header</s-header>
-                    <s-main>main</s-main>
-                    <s-footer>footer</s-footer>
-                </s-layout>
-            </s-layout>
+        <s-button @click="showToast">弹窗toast</s-button>
     </div>
     <script src="./src/app.js"></script>
 </body>
