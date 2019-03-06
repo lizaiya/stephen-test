@@ -11,6 +11,7 @@
  Vue.component('s-input', Input)
  Vue.component('s-row', Row)
  Vue.component('s-col', Col)
+ Vue.use(plugin)
  new Vue({
      el: '#app',
      data: {
