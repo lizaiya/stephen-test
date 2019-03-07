@@ -39,16 +39,24 @@
         body {
             font-size: var(--font-size);
         }
-
-        .demo {
-            margin-bottom: 10px;
-        }
     </style>
 </head>
 
 <body>
     <div id="app">
-        <s-button @click="showToast">弹窗toast</s-button>
+
+        <s-tabs :selected="selectedTab">
+            <s-tabs-head>
+                <s-tabs-item name="video">视频课程</s-tabs-item>
+                <s-tabs-item name="audio">音频课程</s-tabs-item>
+                <s-tabs-item name="lecturer">讲师课程</s-tabs-item>
+            </s-tabs-head>
+            <s-tabs-body>
+                <s-tabs-pane name="video">视频内容</s-tabs-pane>
+                <s-tabs-pane name="audio">音频内容</s-tabs-pane>
+                <s-tabs-pane name="lecturer">讲师内容</s-tabs-pane>
+            </s-tabs-body>
+        </s-tabs>
     </div>
     <script src="./src/app.js"></script>
 </body>

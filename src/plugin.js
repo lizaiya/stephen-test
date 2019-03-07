@@ -2,6 +2,7 @@ import Toast from './toast'
 let currentToast;
 export default {
     install(Vue, options) {
+        Vue.prototype.$bus = new Vue();
         Vue.prototype.$toast = function(msg, propsData) {
             if (currentToast) {
                 currentToast.close();
