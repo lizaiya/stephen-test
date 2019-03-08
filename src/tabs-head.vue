@@ -37,6 +37,7 @@ $border-color: #ddd;
   justify-content: flex-start;
   align-items: center;
   position: relative;
+  border-bottom: 1px solid $border-color;
   > .line {
     position: absolute;
     bottom: 0;
