@@ -28,6 +28,11 @@ export default {
   },
 
   mounted() {
+    if (this.$children.length === 0) {
+      console &&
+        console.warn &&
+        console.warn("tabs没有子组件，应该是tabs-head和tabs-body");
+    }
     this.$children.forEach(vm => {
       if (vm.$options.name === "StephenTabsHead") {
         vm.$children.forEach(node => {

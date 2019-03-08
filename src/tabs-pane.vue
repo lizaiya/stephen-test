@@ -24,7 +24,7 @@ export default {
     };
   },
 
-  created() {
+  mounted() {
     this.$bus.$on("update:selected", name => {
       this.active = name === this.name;
       // console.log(`传值${name},我自身的值${this.name}`);

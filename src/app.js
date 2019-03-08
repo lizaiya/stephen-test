@@ -35,13 +35,6 @@
  Vue.component('s-tabs-pane', TabsPane)
  Vue.component('s-tabs-item', TabsItem)
 
- import TestTabs from './test-tabs/tabs';
- //  import TabsHead from './test-tabs/tabs-head';
- //  import TabsBody from './test-tabs/tabs-body';
- import TestTabsPane from './test-tabs/tabs-pane';
- //  import TabsItem from './test-tabs/tabs-item';
- Vue.component('s-test-tabs', TestTabs)
- Vue.component('s-test-tabs-pane', TestTabsPane)
  Vue.use(plugin)
 
  new Vue({

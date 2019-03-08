@@ -1,5 +1,6 @@
 <template>
-  <div class="tabs-item" @click="onClick" :class="classes">
+  <!-- data-name属性方便测试 -->
+  <div class="tabs-item" @click="onClick" :class="classes" :data-name="name">
     <slot></slot>
   </div>
 </template>
@@ -32,11 +33,11 @@ export default {
       if (!this.disabled) {
         //禁止按钮
         this.$bus.$emit("update:selected", this.name, this);
-        this.$emit("update:selected", this.selected);
+        // this.$emit("update:selected", this.selected);
       }
     }
   },
-  created() {
+  mounted() {
     this.$bus.$on("update:selected", name => {
       this.active = name === this.name;
     });
