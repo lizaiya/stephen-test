@@ -31,7 +31,7 @@ export default {
     xxx() {
       if (!this.disabled) {
         //禁止按钮
-        this.$bus.$emit("update:selected", this.name);
+        this.$bus.$emit("update:selected", this.name, this);
         this.$emit("update:selected", this.selected);
       }
     }
@@ -39,14 +39,13 @@ export default {
   created() {
     this.$bus.$on("update:selected", name => {
       this.active = name === this.name;
-      // console.log(`传值${name},我自身的值${this.name}`);
     });
   }
 };
 </script>
 
 <style scoped lang="scss">
-$blue: blue;
+$blue: #1890ff;
 $disabled-text-color: grey;
 .tabs-item {
   flex-shrink: 0;
@@ -56,7 +55,8 @@ $disabled-text-color: grey;
   display: flex;
   align-items: center;
   &.active {
-    background: red;
+    color: $blue;
+    font-weight: bold;
   }
   &.disabled {
     background: $disabled-text-color;

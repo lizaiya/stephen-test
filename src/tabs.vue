@@ -28,7 +28,18 @@ export default {
   },
 
   mounted() {
-    this.$bus.$emit("update:selected", this.selected);
+    this.$children.forEach(vm => {
+      if (vm.$options.name === "StephenTabsHead") {
+        vm.$children.forEach(node => {
+          if (
+            node.$options.name === "StephenTabsItem" &&
+            node.name === this.selected
+          ) {
+            this.$bus.$emit("update:selected", this.selected, node);
+          }
+        });
+      }
+    });
   }
 };
 </script>

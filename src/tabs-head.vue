@@ -1,6 +1,7 @@
 <template>
   <div class="tabs-head">
     <slot></slot>
+    <div class="line" ref="line"></div>
     <div class="actions-wrapper">
       <slot name="opeart"></slot>
     </div>
@@ -10,20 +11,24 @@
 <script>
 export default {
   name: "StephenTabsHead",
-
   data() {
     return {};
   },
-  // created() {
-  //   this.$emit("update:selected", "tabs-head 抛出的数据");
-  // },
-  mounted() {}
+  mounted() {
+    this.$bus.$on("update:selected", (item, vm) => {
+      let left = vm.$el.offsetLeft;
+      let width = vm.$el.getBoundingClientRect().width;
+      this.$refs.line.style.width = `${width}px`;
+      // this.$refs.line.style.left = `${left}px`;
+      this.$refs.line.style.transform = `translateX(${left}px)`;
+    });
+  }
 };
 </script>
 
 <style scoped lang="scss">
 $tab-height: 40px;
-$blue: blue;
+$blue: #1890ff;
 $border-color: #ddd;
 .tabs-head {
   flex-shrink: 0;
@@ -31,7 +36,14 @@ $border-color: #ddd;
   height: $tab-height;
   justify-content: flex-start;
   align-items: center;
-  border: 1px solid red;
+  position: relative;
+  > .line {
+    position: absolute;
+    bottom: 0;
+    border-bottom: 1px solid $blue;
+    transition: all 350ms;
+    height: 1px;
+  }
   > .actions-wrapper {
     margin-left: auto;
     padding: 0 1em;

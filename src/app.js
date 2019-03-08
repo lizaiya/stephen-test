@@ -47,7 +47,7 @@
  new Vue({
      el: '#app',
      data: {
-         selectedTab: 'audio',
+         selectedTab: 'lecturer',
          loading1: false,
          loading2: false,
          loading3: false,
