@@ -32,33 +32,28 @@
             --border-hover-color: #666;
         }
 
-        #app {
-            margin: 20px;
-        }
+
 
         body {
             font-size: var(--font-size);
+
         }
     </style>
 </head>
 
 <body>
-    <div id="app">
-        <s-tabs :selected="selectedTab">
-            <s-tabs-head>
-                <s-tabs-item name="video" disabled>视频课程</s-tabs-item>
-                <s-tabs-item name="audio">音频课程</s-tabs-item>
-                <s-tabs-item name="lecturer">讲师课程</s-tabs-item>
-                <template slot="opeart">
-                    设置
-                </template>
-            </s-tabs-head>
-            <s-tabs-body>
-                <s-tabs-pane name="video">视频内容</s-tabs-pane>
-                <s-tabs-pane name="audio">音频内容</s-tabs-pane>
-                <s-tabs-pane name="lecturer">讲师内容</s-tabs-pane>
-            </s-tabs-body>
-        </s-tabs>
+    <div id="app" style="padding-left: 300px;">
+        <div style="overflow: hidden; padding-top: 150px; padding-bottom: 40px;">
+            <s-popover position="top">
+                <div slot="content">
+                    内容内容内容内容内内容内容内容内容内内容内容内容内容内内容内容内容内容
+                    内内容内容内容内容内内容内容内容内容内内容内容内容内容内内容内容内容内
+                    容内内容内容内容内容内内容内容内容内容内
+                </div>
+                <s-button>popover组件</s-button>
+            </s-popover>
+        </div>
+
     </div>
     <script src="./src/app.js"></script>
 </body>
