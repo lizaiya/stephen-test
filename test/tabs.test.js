@@ -1,5 +1,5 @@
 const expect = chai.expect;
-import { createVue } from './util';
+import { createVue, destroyVM } from './util';
 import Vue from 'vue'
 import Tabs from '../src/tabs'
 import TabsHead from '../src/tabs-head'
@@ -13,9 +13,13 @@ Vue.component('s-tabs-item', TabsItem)
 Vue.component('s-tabs-pane', TabsPane)
 Vue.config.productionTip = false
 Vue.config.devtools = false
-//2个测试用例
+//2个测试用例 tabs tabs-item
 describe('Tabs ', () => {
-    let vm
+
+    let vm;
+    afterEach(function() {
+        destroyVM(vm);
+    })
     it('Tabs 存在', () => {
         expect(Tabs).to.exist;
     })
@@ -44,21 +48,18 @@ describe('Tabs ', () => {
                 }
             }
         }, true);
-        vm.$nextTick(_ => {
+        vm.$nextTick(() => {
             let el = vm.$el.querySelector(`.tabs-item[data-name=${vm.selectTab}]`);
-            // let disabledEl = vm.$el.querySelector(`.tabs-item[data-name=video]`);
+            let disabledEl = vm.$el.querySelector(`.tabs-item[data-name=video]`);
             //验证selected和item的name属性
-
             expect(el.classList.contains('active')).to.be.true;
-            console.log(el)
-            //验证disabled
-            // console.log(disabledEl)
-            // expect(disabledEl.disabled).to.be.true;
-            setTimeout(done, 300);
+            //验证itabs-item disabled
+            expect(disabledEl.classList.contains('disabled')).to.be.true;
+            done();
         })
 
 
 
-    });
+    })
 
 })

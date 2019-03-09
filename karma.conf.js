@@ -9,6 +9,9 @@
          client: {
              chai: {
                  includeStack: true
+             },
+             mocha: {
+                 timeout: 6000
              }
          },
 

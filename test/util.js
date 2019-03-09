@@ -36,3 +36,14 @@ export const createVue = function(Compo, mounted = false) {
     }
     return new Vue(Compo).$mount(mounted === false ? null : createElm());
 };
+/**
+ * 回收 vm
+ * @param  {Object} vm
+ */
+export const destroyVM = function(vm) {
+
+    vm && vm.$destroy && vm.$destroy();
+    vm && vm.$el &&
+        vm.$el.parentNode &&
+        vm.$el.parentNode.removeChild(vm.$el);
+};
