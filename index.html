@@ -34,14 +34,13 @@
 
         body {
             font-size: var(--font-size);
-
         }
     </style>
 </head>
 
 <body>
     <div id="app" style="padding: 50px 100px;">
-        <s-collapse v-model="activeNames" @change="handleChange">
+        <s-collapse v-model="activeNames" @change="handleChange" single>
             <s-collapse-item title="音频标题" name="1">音频内容</s-collapse-item>
             <s-collapse-item title="视频标题" name="2">视频内容</s-collapse-item>
             <s-collapse-item title="代理商标题" name="3">代理商内容</s-collapse-item>
