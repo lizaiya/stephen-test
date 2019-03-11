@@ -5,8 +5,6 @@ import Popover from '../src/popover'
 import Button from '../src/button'
 Vue.component('s-popover', Popover)
 Vue.component('s-button', Button)
-
-
 Vue.config.productionTip = false
 Vue.config.devtools = false
 //3个测试用例
