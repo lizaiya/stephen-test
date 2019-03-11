@@ -1,5 +1,5 @@
 <template>
-  <div class="popover" @click="onClick" ref="popover">
+  <div class="popover" ref="popover">
     <div class="content-wrapper" v-if="visibility" :class="{[`position-${position}`]:true}" ref="contentWrapper">
       <slot name="content"></slot>
     </div>
@@ -18,7 +18,28 @@ export default {
       validator(value){
         return ['top','bottom','left','right'].indexOf(value)>=0;
       }
+    },
+    trigger:{
+      type:String,
+      default:'click'
     }
+
+  },
+  computed: {
+   openEvent(){
+     if(this.trigger==='click'){
+       return 'click'
+     }else{
+       return 'mouseenter'
+     }
+   },
+   closeEvent(){
+     if(this.trigger==='click'){
+       return 'click'
+     }else{
+       return 'mouseleave'
+     }
+   }
   },
   data() {
     return {
@@ -27,11 +48,14 @@ export default {
   },
   methods: {
     onClick(e) {
-      if (this.visibility) {
-        this.close()
-      } else {
-        this.open()
-      }
+       if (this.$refs.triggerWrapper.contains(event.target)){
+        if (this.visibility) {
+          this.close()
+        } else {
+          this.open()
+        }
+       }
+
     },
     onClickDocument(e) {
        let popoverEl = this.$refs.popover,
@@ -73,6 +97,22 @@ export default {
 
       this.visibility = true
       this.setPosition()
+    }
+  },
+  mounted(){
+    if(this.trigger==='click'){
+      this.$refs.popover.addEventListener('click',this.onClick);
+    }else{
+      this.$refs.popover.addEventListener('mouseenter',this.open);
+      this.$refs.popover.addEventListener('mouseleave',this.close);
+    }
+  },
+  destroyed(){
+    if (this.trigger === 'click') {
+      this.$refs.popover.removeEventListener('click', this.onClick)
+    } else {
+      this.$refs.popover.removeEventListener('mouseenter', this.open)
+      this.$refs.popover.removeEventListener('mouseleave', this.close)
     }
   }
 }
