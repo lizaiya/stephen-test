@@ -4,7 +4,7 @@
   <button class="s-button" :class="`icon-${iconPosition}`" @click="$emit('click')">
     <s-icon class="icon" :name="icon" v-if="icon&&!loading"></s-icon>
     <s-icon class="loading icon" name="loading" v-if="loading"></s-icon>
-    <div class="content">
+    <div class="s-button-content">
       <slot></slot>
     </div>
   </button>
@@ -74,7 +74,7 @@ $border-color-hover:#666;
   &:focus {
     outline: none;
   }
-  > .content {
+  > .s-button-content {
     order: 2;
   }
   > .icon {
@@ -82,7 +82,7 @@ $border-color-hover:#666;
     margin-right: 0.3em;
   }
   &.icon-right {
-    > .content {
+    > .s-button-content {
       order: 1;
     }
     > .icon {
