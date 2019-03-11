@@ -27,7 +27,7 @@ export default {
     }
   },
   mounted () {
-       this.$bus.$emit('update:selected',this.activeNames) //初始化选项子组件默认状态，
+    this.$bus.$emit('update:selected',this.activeNames) //初始化选项子组件默认状态，
        this.$bus.$on('addItem',(value)=>{ //添加选中子组件
             let activeNamesCopy=JSON.parse(JSON.stringify(this.activeNames)) //深拷贝 不能修改props的值
             if(this.single){

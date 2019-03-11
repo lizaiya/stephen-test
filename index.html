@@ -40,6 +40,17 @@
 
 <body>
     <div id="app" style="padding: 50px 100px;">
+        <div style="overflow: hidden; padding-top: 150px; padding-bottom: 40px;">
+            <s-popover position="top" trigger="hover">
+                <!-- trigger="hover" -->
+                <div slot="content" trigger="hover">
+                    内容内容内容内容内内容内容内容内容内内容内容内容内容内内容内容内容内容
+                    内内容内容内容内容内内容内容内容内容内内容内容内容内容内内容内容内容内
+                    容内内容内容内容内容内内容内容内容内容内
+                </div>
+                <s-button>popover组件</s-button>
+            </s-popover>
+        </div>
         <s-collapse v-model="activeNames" @change="handleChange" single>
             <s-collapse-item title="音频标题" name="1">音频内容</s-collapse-item>
             <s-collapse-item title="视频标题" name="2">视频内容</s-collapse-item>

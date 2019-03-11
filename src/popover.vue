@@ -9,113 +9,123 @@
   </div>
 </template>
 <script>
-export default {
+export default{
   name: 'StephenPopover',
-  props:{
-    position:{
-      type:String,
-      default:'top',
-      validator(value){
-        return ['top','bottom','left','right'].indexOf(value)>=0;
+    props:{
+      position:{
+        type:String,
+        default:'top',
+        validator(value){
+          return ['top','bottom','left','right'].indexOf(value)>=0;
+        }
+      },
+      trigger:{
+        type:String,
+         default:'click',
+        validator(value){
+          return ['hover','click'].indexOf(value)>=0;
+        }
       }
     },
-    trigger:{
-      type:String,
-      default:'click'
-    }
+    data() {
+      return {
+        visibility: false
+      }
+    },
+  //     computed: {
+  //  openEvent(){
+  //    if(this.trigger==='click'){
+  //      return 'click'
+  //    }else{
+  //      return 'mouseenter'
+  //    }
+  //  },
+  //  closeEvent(){
+  //    if(this.trigger==='click'){
+  //      return 'click'
+  //    }else{
+  //      return 'mouseleave'
+  //    }
+  //  }
+  // },
+    methods: {
+      onClick(e) {
+        if (this.$refs.triggerWrapper.contains(event.target)){
+          if (this.visibility) {
+            this.close()
+          } else {
+            this.open()
+          }
+        }
 
-  },
-  computed: {
-   openEvent(){
-     if(this.trigger==='click'){
-       return 'click'
-     }else{
-       return 'mouseenter'
-     }
-   },
-   closeEvent(){
-     if(this.trigger==='click'){
-       return 'click'
-     }else{
-       return 'mouseleave'
-     }
-   }
-  },
-  data() {
-    return {
-      visibility: false
-    }
-  },
-  methods: {
-    onClick(e) {
-       if (this.$refs.triggerWrapper.contains(event.target)){
-        if (this.visibility) {
+      },
+      onClickDocument(e) {
+        let popoverEl = this.$refs.popover,
+          target = e.target,
+          contentWrapperEl = this.$refs.contentWrapper
+          if (popoverEl && (popoverEl === target || popoverEl.contains(target))) {return}
+          if (contentWrapperEl &&(contentWrapperEl === target || contentWrapperEl.contains(target))) { return}
           this.close()
-        } else {
-          this.open()
-        }
-       }
+      },
+      close() {
+        this.visibility = false
+        document.removeEventListener('click', this.onClickDocument)
+      },
+      setPosition() {
+        this.$nextTick(() => {
+          const {contentWrapper, triggerWrapper} = this.$refs
+          document.body.appendChild(contentWrapper)
+          const scrollY=window.scrollY
+          const scrollX=window.scrollX
+          //将content-wrapper 添加到body里面
+          let {width,height, left, top } = triggerWrapper.getBoundingClientRect()
+          let {height: contentHeight} = contentWrapper.getBoundingClientRect()
+          // top top + window.scrollY
+          // bottom top + window.scrollY+height
+          //left left+ window.scrollX
+          //right left+ window.scrollX+width
+          let positions = {
+            top: {top: top + scrollY, left: left + scrollX},
+            bottom: {top: top + height + scrollY, left: left + scrollX},
+            left: {top: top + scrollY + (height - contentHeight) / 2,left: left + scrollX},
+            right: {top: top + scrollY + (height - contentHeight) / 2,left: left + scrollX +width}
+          }
+          contentWrapper.style.left = positions[this.position].left + 'px'
+          contentWrapper.style.top = positions[this.position].top + 'px'
+          document.addEventListener('click', this.onClickDocument)
+        })
+      },
+      open() {
+        this.visibility = true
+        this.setPosition()
+      }
+    },
+    mounted () {
+      console.log(this.trigger);
+      if(this.trigger==='click'){
+        this.$refs.popover.addEventListener('click',this.onClick);
+      }else{
+        this.$refs.popover.addEventListener('mouseenter',this.open);
+        this.$refs.popover.addEventListener('mouseleave',this.close);
+      }
+    },
+    // destroyed(){
+    //   console.log(this.$refs.popover);
+    //  if( this.$refs.popover){
+    //    if (this.trigger === 'click') {
+    //     this.$refs.popover.removeEventListener('click', this.onClick)
+    //   } else {
+    //     console.log(2);
+    //     this.$refs.popover.removeEventListener('mouseenter', this.open)
+    //     this.$refs.popover.removeEventListener('mouseleave', this.close)
+    //   }
+    //  }
 
-    },
-    onClickDocument(e) {
-       let popoverEl = this.$refs.popover,
-        target = e.target,
-        contentWrapperEl = this.$refs.contentWrapper
-         if (popoverEl && (popoverEl === target || popoverEl.contains(target))) {return}
-         if (contentWrapperEl &&(contentWrapperEl === target || contentWrapperEl.contains(target))) { return}
-         this.close()
-    },
-    close() {
-      this.visibility = false
-      document.removeEventListener('click', this.onClickDocument)
-    },
-    setPosition() {
-      this.$nextTick(() => {
-        const {contentWrapper, triggerWrapper} = this.$refs
-        document.body.appendChild(contentWrapper)
-        const scrollY=window.scrollY
-        const scrollX=window.scrollX
-        //将content-wrapper 添加到body里面
-        let {width,height, left, top } = triggerWrapper.getBoundingClientRect()
-        let {height: contentHeight} = contentWrapper.getBoundingClientRect()
-        // top top + window.scrollY
-        // bottom top + window.scrollY+height
-        //left left+ window.scrollX
-        //right left+ window.scrollX+width
-        let positions = {
-          top: {top: top + scrollY, left: left + scrollX},
-          bottom: {top: top + height + scrollY, left: left + scrollX},
-          left: {top: top + scrollY + (height - contentHeight) / 2,left: left + scrollX},
-          right: {top: top + scrollY + (height - contentHeight) / 2,left: left + scrollX +width}
-        }
-        contentWrapper.style.left = positions[this.position].left + 'px'
-        contentWrapper.style.top = positions[this.position].top + 'px'
-        document.addEventListener('click', this.onClickDocument)
-      })
-    },
-    open() {
+    // }
 
-      this.visibility = true
-      this.setPosition()
-    }
-  },
-  mounted(){
-    if(this.trigger==='click'){
-      this.$refs.popover.addEventListener('click',this.onClick);
-    }else{
-      this.$refs.popover.addEventListener('mouseenter',this.open);
-      this.$refs.popover.addEventListener('mouseleave',this.close);
-    }
-  },
-  destroyed(){
-    if (this.trigger === 'click') {
-      this.$refs.popover.removeEventListener('click', this.onClick)
-    } else {
-      this.$refs.popover.removeEventListener('mouseenter', this.open)
-      this.$refs.popover.removeEventListener('mouseleave', this.close)
-    }
-  }
 }
+
+
 </script>
 
 <style scoped lang="scss">

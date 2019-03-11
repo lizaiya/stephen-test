@@ -9,7 +9,7 @@ Vue.component('s-collapse-item', CollapseItem)
 
 Vue.config.productionTip = false
 Vue.config.devtools = false
-//3个测试用例 tabs tabs-item
+//3个测试用例
 describe('Tabs ', () => {
     let vm;
     afterEach(function () {
