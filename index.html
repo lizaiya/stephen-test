@@ -32,8 +32,6 @@
             --border-hover-color: #666;
         }
 
-
-
         body {
             font-size: var(--font-size);
 
@@ -42,18 +40,14 @@
 </head>
 
 <body>
-    <div id="app" style="padding-left: 300px;">
-        <div style="overflow: hidden; padding-top: 150px; padding-bottom: 40px;">
-            <s-popover position="top" trigger="trigger">
-                <div slot="content">
-                    内容内容内容内容内内容内容内容内容内内容内容内容内容内内容内容内容内容
-                    内内容内容内容内容内内容内容内容内容内内容内容内容内容内内容内容内容内
-                    容内内容内容内容内容内内容内容内容内容内
-                </div>
-                <s-button>popover组件</s-button>
-            </s-popover>
-        </div>
-
+    <div id="app" style="padding: 50px 100px;">
+        <s-collapse v-model="activeNames" @change="handleChange">
+            <s-collapse-item title="音频标题" name="1">音频内容</s-collapse-item>
+            <s-collapse-item title="视频标题" name="2">视频内容</s-collapse-item>
+            <s-collapse-item title="代理商标题" name="3">代理商内容</s-collapse-item>
+            <s-collapse-item title="讲师标题" name="4">讲师内容</s-collapse-item>
+        </s-collapse>
+        {{activeNames}}
     </div>
     <script src="./src/app.js"></script>
 </body>
