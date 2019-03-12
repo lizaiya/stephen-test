@@ -47,12 +47,19 @@ Vue.use(plugin)
 new Vue({
     el: '#app',
     data: {
+        message: 1,
         activeNames: ['1']
 
     },
     methods: {
         handleChange (val) {
             console.log('%c this is colored', 'color:red', `出发change事件${val}`)
+        },
+        inputChange (val) {
+            console.log('111')
+        },
+        focus1 () {
+
         }
     }
 

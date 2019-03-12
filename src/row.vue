@@ -42,8 +42,10 @@ export default {
 </script>
 <style lang="scss">
 .row {
+  box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
+
   &-left {
     justify-content: flex-start;
   }

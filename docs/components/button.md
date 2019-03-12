@@ -4,16 +4,29 @@ sidebarDepth: 2
 ---
 
 # 按钮
+<ClientOnly><button-demo></button-demo></ClientOnly>
 
-使用方法
+```
+    <s-button>默认样式</s-button>
+    <s-button icon-position="left" :loading="true">loading</s-button>
+    <s-button icon-position="left" icon="settings">icon左</s-button>
+    <s-button icon-position="right" icon="settings">icon右</s-button>
+    <s-button icon="settings"></s-button>
+    <s-button :loading="loading" @click="loading=!loading">切换loading</s-button>
+```
 
-<ClientOnly>
-  <button-demo></button-demo>
-</ClientOnly>
+## buttonGroup
 
+组合按钮
+
+<ClientOnly><buttonGroup-demo></buttonGroup-demo></ClientOnly>
+ 
 
 
 ```
-   <s-button icon-position="left" :loading="true">loading</s-button>
-   <s-button>默认样式</s-button>
+ <s-button-group>
+      <s-button icon="left">上一页</s-button>
+      <s-button icon="left">更多</s-button>
+      <s-button icon="right" icon-position="right">下一页</s-button>
+  </s-button-group>
 ```
