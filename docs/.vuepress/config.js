@@ -1,4 +1,5 @@
 module.exports = {
+    base:'/stephen-test/',
     title: 'Stephen-ui',
     description: '一个好用的框架',
     themeConfig:{  

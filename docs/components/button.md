@@ -7,7 +7,11 @@ sidebarDepth: 2
 
 使用方法
 
-<button-demo></button-demo>
+<ClientOnly>
+  <button-demo></button-demo>
+</ClientOnly>
+
+
 
 ```
    <s-button icon-position="left" :loading="true">loading</s-button>
