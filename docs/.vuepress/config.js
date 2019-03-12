@@ -1,9 +1,5 @@
 module.exports = {
-<<<<<<< HEAD
     base:'/stephen-test/',
-=======
-    base: '/stephen-test/',
->>>>>>> ce4d89482f58e9faebfefa3c12e4948e8982306e
     title: 'Stephen-ui',
     description: '一个好用的框架',
     themeConfig: {
