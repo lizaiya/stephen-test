@@ -5,9 +5,10 @@ sidebarDepth: 2
 
 # input
 
- <input-demo></input-demo>
-
-
+***通过鼠标或键盘输入字符***
+    <ClientOnly>
+        <input-demo></input-demo>
+    </ClientOnly>
 ## Input Events
 事件名称 | 说明 |   回调
 --|:--:|:--:

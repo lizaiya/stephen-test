@@ -4,7 +4,8 @@ sidebarDepth: 2
 ---
 
 # 按钮
-<button-demo></button-demo>
+<ClientOnly><button-demo></button-demo></ClientOnly>
+
 ```
     <s-button>默认样式</s-button>
     <s-button icon-position="left" :loading="true">loading</s-button>
@@ -18,7 +19,9 @@ sidebarDepth: 2
 
 组合按钮
 
+
  <buttonGroup-demo></buttonGroup-demo>
+
 
 ```
  <s-button-group>

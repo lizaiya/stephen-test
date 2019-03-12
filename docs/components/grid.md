@@ -8,8 +8,10 @@ sidebarDepth: 2
 ## 基础布局
 
 使用单一分栏创建基础的栅格布局。
+    <ClientOnly>
+    <grid-demo></grid-demo>
+    </ClientOnly>
 
-<grid-demo></grid-demo>
 
 代码示例
 
@@ -47,8 +49,10 @@ sidebarDepth: 2
 ## 分栏间隔
 
 分栏之间存在间隔
+    <ClientOnly>
+        <grid-gutter-demo></grid-gutter-demo>
+    </ClientOnly>
 
-<grid-gutter-demo></grid-gutter-demo>
 
 
 间隔代码示例
@@ -68,8 +72,10 @@ Row 组件 提供 gutter 属性来指定每一栏之间的间隔，默认间隔�
 
 通过基础的 1/24 分栏任意扩展组合形成较为复杂的混合布局。
 
+<ClientOnly>
+    <grid-mix-demo></grid-mix-demo>
+</ClientOnly>
 
-<grid-mix-demo></grid-mix-demo>
 
 混合布局代码示例
 
@@ -97,8 +103,10 @@ Row 组件 提供 gutter 属性来指定每一栏之间的间隔，默认间隔�
 ## 分栏布局
 
 通过设置Col组件的 offset属性 支持偏移指定的栏数。
+<ClientOnly>
+    <grid-offset-demo></grid-offset-demo>
+</ClientOnly>
 
-<grid-offset-demo></grid-offset-demo>
 
 分栏布局 代码示例
 
@@ -124,8 +132,10 @@ narrowPc 769px~992px
 pc  993px~1200px
 widePc 1201px及以上
 
+<ClientOnly>
+    <grid-res-demo></grid-res-demo>
+</ClientOnly>
 
-<grid-res-demo></grid-res-demo>
 
 响应式布局 代码示例
 

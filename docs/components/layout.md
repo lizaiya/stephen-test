@@ -20,8 +20,10 @@ s-main：主要区域容器。
 s-footer：底栏容器。
 
 ***s-layout的子元素只能是后四者，后四者的父元素也只能是 s-layout***
+<ClientOnly>
+   <layout-demo></layout-demo>
+</ClientOnly>
 
- <layout-demo></layout-demo>
 
 ### 示例代码
 ```
