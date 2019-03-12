@@ -85,6 +85,8 @@ export default {
 </script>
 <style lang="scss" scoped>
 .col {
+  box-sizing: border-box;
+  min-height: 20px;
   //phone
   //前缀
   $class-prefix: col-;
