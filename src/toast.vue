@@ -90,10 +90,6 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-$font-size: 14px;
-$color: white;
-$toast-min-height: 40px;
-$toast-bg: rgba(0, 0, 0, 0.75);
 .toast-wrap {
   position: fixed;
   left: 50%;
@@ -120,6 +116,7 @@ $toast-bg: rgba(0, 0, 0, 0.75);
     background: $toast-bg;
     box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.5);
     color: $color;
+    @include color(#333);
     font-size: $font-size;
     border-radius: 4px;
     display: flex;

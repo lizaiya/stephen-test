@@ -54,8 +54,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-$gray: gray;
-$border-radius: 4px;
 .collapse {
   border: 1px solid $gray;
   border-radius: $border-radius;

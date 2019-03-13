@@ -1,0 +1,22 @@
+$blue: #1890ff;
+$border-color-hover: #666;
+$border-color: #333;
+$border-radius: 4px;
+$box-shadow-color: rgba(0, 0, 0, 0.5);
+$button-active-bg: #eee;
+$button-bg: white;
+$button-height: 32px;
+$color: #333;
+$font-size: 14px;
+$gray: gray;
+$height: 32px;
+$red: #f1453d;
+$tab-height: 40px;
+$toast-bg: rgba(0, 0, 0, 0.75);
+$toast-min-height: 40px;
+@mixin border($color:#333) {
+    border:1px solid $color
+}
+@mixin color($color:#333) {
+   color:$color
+}

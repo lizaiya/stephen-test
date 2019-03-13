@@ -129,8 +129,6 @@ export default{
 </script>
 
 <style scoped lang="scss">
-$border-color: #333;
-$border-radius: 4px;
 .popover {
   display: inline-block;
   vertical-align: top;
@@ -138,7 +136,7 @@ $border-radius: 4px;
 }
 .content-wrapper {
   position: absolute;
-  border: 1px solid $border-color;
+  @include border(#333);
   border-radius: $border-radius;
   filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.5));
   background: white;

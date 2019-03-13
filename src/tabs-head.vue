@@ -27,9 +27,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-$tab-height: 40px;
-$blue: #1890ff;
-$border-color: #ddd;
 .tabs-head {
   flex-shrink: 0;
   display: flex;

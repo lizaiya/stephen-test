@@ -39,7 +39,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-$gray: gray;
 .collapse-item {
   border: 1px solid $gray;
   margin-left: -1px;

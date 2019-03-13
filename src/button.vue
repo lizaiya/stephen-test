@@ -37,14 +37,6 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-$font-size:14px;
-$button-height:32px;
-$button-bg:white;
-$button-active-bg:#eee;
-$border-radius:4px;
-$color:#333;
-$border-color:#999;
-$border-color-hover:#666;
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -54,12 +46,13 @@ $border-color-hover:#666;
   }
 }
 .s-button {
-  font-size:$font-size;
+  font-size: $font-size;
   height: $button-height;
   padding: 0 0.85em;
   font: inherit;
   border-radius: $border-radius;
-  border: 1px solid $border-color;
+  @include border(#999);
+
   background: $button-bg;
   display: inline-flex;
   justify-content: center;
