@@ -1,6 +1,7 @@
 $blue: #1890ff;
 $border-color-hover: #666;
 $border-color: #333;
+$border-color-light: lighten($border-color, 70%);
 $border-radius: 4px;
 $box-shadow-color: rgba(0, 0, 0, 0.5);
 $button-active-bg: #eee;
@@ -19,4 +20,7 @@ $toast-min-height: 40px;
 }
 @mixin color($color:#333) {
    color:$color
+}
+.box-shadow{
+    box-shadow:0 0 5px rgba(0,0,0,0.15);
 }
