@@ -17,6 +17,11 @@ export default {
     components: {
         's-button':Button,
         's-button-group':ButtonGroup
+    },
+    data(){
+      return {
+        msg:'a'
+      }
     }
 }
 </script>
