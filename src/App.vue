@@ -1,24 +1,18 @@
 <template>
   <div>
-    <s-cascader :options="options"></s-cascader>
+    <div>
+      {{selected}}
+    </div>
+    <s-cascader :options="options" v-model="selected" @change="handleChange" separator="-" @active-item-change="handleItemChange"></s-cascader>
+    <!-- @active-item-change="handleItemChange" -->
 
   </div>
 </template>
 <script>
 import Cascader from './cascader'
-
-export default {
-    name:'demo',
-    components: {
-        's-cascader':Cascader
-    },
-    data(){
-      return {
-        options:[
-            {
-              value:'广东',
-              children:[
-                {
+import Test from './test'
+let gdchildren=[
+  {
                   value:'韶关',
                   children:[
                     {value:'武江'},
@@ -68,14 +62,10 @@ export default {
                 {value:'茂名'},
                 {value:'肇庆'},
                 {value:'惠州'},
-                {value:'梅州'},
-
-              ]
-            },
-            {
-              value:'安徽',
-              children:[
-                {
+                {value:'梅州'}
+]
+let ahchildren=[
+  {
                   value:'芜湖',
                   children:[
                     {value:'瑶海'},
@@ -111,12 +101,9 @@ export default {
                 {value:'铜陵'},
                 {value:'黄山'},
                 {value:'滁州'},
-              ]
-            },
-            {
-              value:'江苏',
-              children:[
-                {
+]
+let jschildren=[
+  {
                   value:'南京',
                   children:[
                     {value:'玄武'},
@@ -153,11 +140,58 @@ export default {
                 {value:'淮安'},
                 {value:'盐城'},
                 {value:'扬州'},
-              ]
+]
+export default {
+    name:'demo',
+    components: {
+        's-cascader':Cascader,
+        's-test':Test,
+    },
+    data(){
+      return {
+        options:[
+            {
+              value:'广东',
+              children:[]
+              // children:gdchildren
+            },
+            {
+              value:'安徽',
+              children:[]
+              //  children:ahchildren
+            },
+            {
+              value:'江苏',
+              children:[]
+            //  children:jschildren
             }
-        ]
+        ],
+        selected:[],
+
       }
-    }
+    },
+    methods:{
+      handleChange(val){
+        // console.log('change',val)
+      },
+      handleItemChange(val){
+        console.log(val)
+        // console.log('active-item-change',val);
+        setTimeout(() => {
+            if (val.indexOf('广东') > -1 && !this.options[0].children.length) {
+              this.options[0].children = [{value: '广州',children:[{value:'白云区'}]}];
+            }
+            if (val.indexOf('安徽') > -1 && !this.options[1].children.length) {
+              this.options[1].children = [{value: '安庆'}];
+            }
+            if (val.indexOf('江苏') > -1 && !this.options[2].children.length) {
+              this.options[2].children = [{value: '南京'}];
+            }
+          // console.log( this.options[0])
+        }, 300);
+      }
+    },
+
 }
 </script>
 
