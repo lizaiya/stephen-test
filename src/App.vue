@@ -3,12 +3,20 @@
     <div>
       {{selected}}
     </div>
-    <s-cascader :options="options" v-model="selected" @change="handleChange" separator="-" @active-item-change="handleItemChange"></s-cascader>
     <!-- @active-item-change="handleItemChange" -->
-
+    <s-cascader :options="options" v-model="selected" @active-item-change="handleItemChange" @change="handleChange" separator="-" :show-all-levels="false" :change-on-select="false"></s-cascader>
   </div>
 </template>
 <script>
+/*
+show-all-levels 可以仅在输入框中显示选中项最后一级的标签，而不是选中项所在的完整路径
+true 显示所有路径
+false 显示最后一项路径
+
+change-on-select 是否选择既改变输入框的值 默认false
+
+@active-item-change 动态加载  show-all-levels只能是false, 没有子节点不能设置children元素
+*/
 import Cascader from './cascader'
 import Test from './test'
 let gdchildren=[
@@ -163,19 +171,20 @@ export default {
             {
               value:'江苏',
               children:[]
-            //  children:jschildren
+              //  children:jschildren
             }
         ],
+        // selected:['安徽','安庆','宿松'],
         selected:[],
 
       }
     },
     methods:{
       handleChange(val){
-        // console.log('change',val)
+        // console.log('change')
       },
       handleItemChange(val){
-        console.log(val)
+        // console.log('handleItemChange',val)
         // console.log('active-item-change',val);
         setTimeout(() => {
             if (val.indexOf('广东') > -1 && !this.options[0].children.length) {
@@ -191,6 +200,7 @@ export default {
         }, 300);
       }
     },
+
 
 }
 </script>

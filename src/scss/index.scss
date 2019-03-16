@@ -1,2 +1,12 @@
 @import "./normalize.scss";
 @import "./var.scss";
+
+@font-face {
+  font-family: 'stephen';  /* project id 1060434 */
+  src: url('http://at.alicdn.com/t/font_1060434_q1vgrxbclod.eot');
+  src: url('http://at.alicdn.com/t/font_1060434_q1vgrxbclod.eot?#iefix') format('embedded-opentype'),
+  url('http://at.alicdn.com/t/font_1060434_q1vgrxbclod.woff2') format('woff2'),
+  url('http://at.alicdn.com/t/font_1060434_q1vgrxbclod.woff') format('woff'),
+  url('http://at.alicdn.com/t/font_1060434_q1vgrxbclod.ttf') format('truetype'),
+//   url('http://at.alicdn.com/t/font_1060434_q1vgrxbclod.svg#stephen') format('svg');
+}

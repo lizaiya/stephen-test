@@ -13,5 +13,21 @@
 }
 
 body {
+  background: #fff;
   font-size: 14px;
+}
+
+ul li {
+  list-style: none;
+}
+
+.box-shadow {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+}
+
+@font-face {
+  font-family: 'stephen';
+  /* project id 1060434 */
+  src: url("http://at.alicdn.com/t/font_1060434_q1vgrxbclod.eot");
+  src: url("http://at.alicdn.com/t/font_1060434_q1vgrxbclod.eot?#iefix") format("embedded-opentype"), url("http://at.alicdn.com/t/font_1060434_q1vgrxbclod.woff2") format("woff2"), url("http://at.alicdn.com/t/font_1060434_q1vgrxbclod.woff") format("woff"), url("http://at.alicdn.com/t/font_1060434_q1vgrxbclod.ttf") format("truetype");
 }

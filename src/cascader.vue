@@ -1,35 +1,57 @@
 <template>
-  <div class="cascader">
-    <div class="trigger" @click="show">{{selected}}</div>
+  <div class="cascader" v-click-outside="close">
+    <div class="trigger" @click="show">{{showAllLevels?selected:selected[selected.length-1]}}</div>
     <div class="popover-wrapper" v-if="visibility">
-      <div v-for="(children,index) in childrensCom" :key="index" :selected="selected" :level="index" v-on="$listeners" :is="children.component" :items="children.options" >
+      <!-- :selected="cascaderSelected"  -->
+      <div v-for="(children,index) in childrensCom" :key="index" v-model="cascaderSelected" :level="index" @updateVisibility="close" v-on="$listeners" :is="children.component" :items="children.options">
       </div>
     </div>
   </div>
 </template>
 <script>
-// import CascaderItem from '@/cascader-items'
 import CascaderItemTest from '@/cascader-items-test'
+import ClickOutside from '@/click-outside'
 import Test from './test'
 export default {
   name:"StepHenCascader",
+  directives: {
+    ClickOutside
+  },
   components:{
     's-test':Test,
-    // 's-cascader-item':CascaderItem
     's-cascader-item-test':CascaderItemTest
   },
   model:{
     prop:'selected',
     event:'change'
   },
+    data() {
+    return {
+      cascaderSelected:[],
+      visibility:false,
+      childrensCom:[]
+    }
+  },
   inheritAttrs:false,
   props:{
+    //是否在输入框显示完整路径
+    showAllLevels:{
+      type:Boolean,
+      default:true
+    },
+    //选择既改变输入框的值
+    changeOnSelect:{
+      type:Boolean,
+      default:false
+    },
     //分隔符
       separator:{
         type:String,
         default:'/'
       },
-      selected:Array,
+      selected:{
+        type:Array
+      },
     //加载数据
       options:{
           type:Array,
@@ -37,35 +59,38 @@ export default {
       },
   },
   watch:{
-    selected:{
+
+    cascaderSelected:{
       handler: function (newVal,oldVal){
-
-       let level=this.selected.length-1;
-       let item=this.initCascader(this.options,newVal,'add')[level]
-       this.upDateItem(newVal)
-       if(this.$listeners['active-item-change']){
-        if(JSON.stringify(oldVal)!==JSON.stringify(newVal)){
-           console.log('123')
-            this.$listeners['active-item-change'](item.value)
-         }
-
-        //  console.log(item.value)
-
-       }
-      },
+        let level=this.cascaderSelected.length-1;
+        let item=this.initCascader(this.options,newVal,'add')[level]
+        this.upDateItem(newVal)
+        //是否选中既改变
+        if(this.changeOnSelect){
+          let newValStr=JSON.stringify(newVal);
+          let selectedStr=JSON.stringify(this.selected);
+          if((!item || !item.children||item.children.legnth)&&(newValStr!==selectedStr)){
+            //'触发外部cahnge组件'
+            this.$listeners.change(newVal)
+          }
+        }else{
+           //触发外部change事件
+          this.$listeners.change(newVal);
+        }
+        //动态加载
+        if(this.$listeners['active-item-change']){
+            if(JSON.stringify(oldVal)!==JSON.stringify(newVal)){
+              this.$listeners['active-item-change'](item.value)
+            }
+        }
+       },
       deep:true
     },
     options:{
       handler:function(newVal,oldVal){
-         this.upDateItem(this.selected)
+         this.upDateItem(this.cascaderSelected)
       },
       deep:true
-    }
-  },
-  data() {
-    return {
-      visibility:false,
-      childrensCom:[]
     }
   },
   methods:{
@@ -94,12 +119,12 @@ export default {
       search(options,selected[0],0,type);
       return arr;
     },
-
     open(){
       this.visibility=true;
     },
     close(){
-       this.visibility=false;
+      console.log('关闭了')
+      this.visibility=false;
     },
     add(component,options){
       this.childrensCom.push({component, options})
@@ -108,21 +133,23 @@ export default {
      if( this.visibility){
         this.close()
       }else{
+        //如果当前没有默认值 就默认弹出第一层
         if(!this.selected.length){
           this.add('s-cascader-item-test',this.options)
         }
         this.open()
       }
     },
+    //选中的item是否有子节点 并添加item
     activeChange(item,level){
       if(item&&item.children&&item.children.length){
           this.childrensCom.splice(level + 1)
           this.add('s-cascader-item-test',item.children)
         }
     },
-
   },
   mounted(){
+    this.cascaderSelected=this.selected;
     if(this.selected.length){
       this.initCascader(this.options,this.selected)
     }
