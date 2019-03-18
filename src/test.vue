@@ -1,38 +1,39 @@
 <template>
-  <div class="StepHenTest">
-    <ul @click="abc">
-      <li>1可以仅在输入框中显示</li>
-      <li>2可以仅在输入框中显示</li>
-      <li>3可以仅在输入框中显示</li>
-      <li>4可以仅在输入框中显示</li>
-    </ul>
-  </div>
+  <!-- v-bind:abcd="abcd" -->
+  <div v-bind:abcd="abcd" @click="wo">{{abcd}}</div>
+  <!-- <input type="text" v-bind:abcd="abcd" v-on:change="wo"> -->
+  <!-- <s-input v-model="abcd"></s-input> -->
 </template>
 <script>
-
+import Input from '@/input'
 export default {
-    props:{
-        text:String
-    },
-     data(){
-         return {
+  model:{
+    prop:'abcd',
+    event:'change'
+  },
+  props:{
+        abcd:String
+  },
+  components: {
+    's-input':Input
+  },
+  methods:{
+    wo( $event){
 
-         }
-     },
-     methods:{
-         abc(){
-             console.log(this.text)
-         }
-     }
+      this.$emit('change', '$event.target.value')
+      // console.log($event.target.value)
+    }
+
+    // $emit('change', $event.target.abcd)
+  },
+  mounted () {
+    console.log(this.abcd);
+  }
 
 }
 </script>
 <style lang="scss" scoped>
 .StepHenTest {
-  color: red;
-  > ul {
-    white-space: nowrap;
-  }
 }
 </style>
 

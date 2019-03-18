@@ -101,7 +101,6 @@ export default{
       }
     },
     mounted () {
-      console.log(this.trigger);
       if(this.trigger==='click'){
         this.$refs.popover.addEventListener('click',this.onClick);
       }else{
@@ -109,25 +108,8 @@ export default{
         this.$refs.popover.addEventListener('mouseleave',this.close);
       }
     },
-    // destroyed(){
-    //   console.log(this.$refs.popover);
-    //  if( this.$refs.popover){
-    //    if (this.trigger === 'click') {
-    //     this.$refs.popover.removeEventListener('click', this.onClick)
-    //   } else {
-    //     console.log(2);
-    //     this.$refs.popover.removeEventListener('mouseenter', this.open)
-    //     this.$refs.popover.removeEventListener('mouseleave', this.close)
-    //   }
-    //  }
-
-    // }
-
 }
-
-
 </script>
-
 <style scoped lang="scss">
 .popover {
   display: inline-block;

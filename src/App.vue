@@ -3,8 +3,7 @@
     <div>
       {{selected}}
     </div>
-    <!-- @active-item-change="handleItemChange" -->
-    <s-cascader :options="options" v-model="selected" @active-item-change="handleItemChange" @change="handleChange" separator="-" :show-all-levels="false" :change-on-select="false"></s-cascader>
+    <s-cascader :options="options" popper-class="abc" v-model="selected" @active-item-change="handleItemChange" @change="handleChange" separator="-" :show-all-levels="false" :change-on-select="true"></s-cascader>
   </div>
 </template>
 <script>
@@ -160,28 +159,31 @@ export default {
         options:[
             {
               value:'广东',
-              children:[]
-              // children:gdchildren
+              // children:[]
+              children:gdchildren
             },
             {
               value:'安徽',
-              children:[]
-              //  children:ahchildren
+              // children:[]
+               children:ahchildren
             },
             {
               value:'江苏',
-              children:[]
-              //  children:jschildren
+              // children:[]
+               children:jschildren
             }
         ],
-        // selected:['安徽','安庆','宿松'],
-        selected:[],
+        selected:['安徽','安庆','宿松'],
+
 
       }
     },
     methods:{
+      testChange(val){
+        console.log(val)
+      },
       handleChange(val){
-        // console.log('change')
+      //  console.log('change',val)
       },
       handleItemChange(val){
         // console.log('handleItemChange',val)

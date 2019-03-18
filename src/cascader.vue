@@ -1,15 +1,15 @@
 <template>
-  <div class="cascader" v-click-outside="close">
-    <div class="trigger" @click="show">{{showAllLevels?selected:selected[selected.length-1]}}</div>
-    <div class="popover-wrapper" v-if="visibility">
-      <!-- :selected="cascaderSelected"  -->
-      <div v-for="(children,index) in childrensCom" :key="index" v-model="cascaderSelected" :level="index" @updateVisibility="close" v-on="$listeners" :is="children.component" :items="children.options">
+  <div class="cascader position-top" v-click-outside="close">
+    <div class="trigger" v-bind:selected="selected" @click="show">{{showAllLevels?selected:selected[selected.length-1]}}</div>
+    <div class="popover-wrapper" v-if="visibility" :class="popperClass">
+      <div v-for="(children,index) in childrensCom" :key="index" v-model="childrenSelected" :level="index" @updateVisibility="close" v-on="$listeners" :is="children.component" :items="children.options">
       </div>
     </div>
   </div>
 </template>
 <script>
 import CascaderItemTest from '@/cascader-items-test'
+import Input from '@/input'
 import ClickOutside from '@/click-outside'
 import Test from './test'
 export default {
@@ -18,8 +18,8 @@ export default {
     ClickOutside
   },
   components:{
-    's-test':Test,
-    's-cascader-item-test':CascaderItemTest
+   's-cascader-item-test':CascaderItemTest,
+   's-input':Input
   },
   model:{
     prop:'selected',
@@ -27,13 +27,15 @@ export default {
   },
     data() {
     return {
-      cascaderSelected:[],
+      childrenSelected:[],
       visibility:false,
       childrensCom:[]
     }
   },
   inheritAttrs:false,
   props:{
+    popperClass:String,
+    default:'',
     //是否在输入框显示完整路径
     showAllLevels:{
       type:Boolean,
@@ -59,10 +61,9 @@ export default {
       },
   },
   watch:{
-
-    cascaderSelected:{
+    childrenSelected:{
       handler: function (newVal,oldVal){
-        let level=this.cascaderSelected.length-1;
+        let level=this.childrenSelected.length-1;
         let item=this.initCascader(this.options,newVal,'add')[level]
         this.upDateItem(newVal)
         //是否选中既改变
@@ -80,7 +81,9 @@ export default {
         //动态加载
         if(this.$listeners['active-item-change']){
             if(JSON.stringify(oldVal)!==JSON.stringify(newVal)){
-              this.$listeners['active-item-change'](item.value)
+              if(item && item.value){
+                  this.$listeners['active-item-change'](item.value)
+               }
             }
         }
        },
@@ -88,7 +91,7 @@ export default {
     },
     options:{
       handler:function(newVal,oldVal){
-         this.upDateItem(this.cascaderSelected)
+        this.upDateItem(this.childrenSelected)
       },
       deep:true
     }
@@ -123,7 +126,6 @@ export default {
       this.visibility=true;
     },
     close(){
-      console.log('关闭了')
       this.visibility=false;
     },
     add(component,options){
@@ -149,7 +151,7 @@ export default {
     },
   },
   mounted(){
-    this.cascaderSelected=this.selected;
+    this.childrenSelected=this.selected;
     if(this.selected.length){
       this.initCascader(this.options,this.selected)
     }
@@ -178,9 +180,30 @@ export default {
     left: 0;
     background: white;
     display: flex;
-    margin-top: 8px;
+    margin-top: 15px;
     z-index: 1;
+    min-height: 150px;
     @extend .box-shadow;
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+      border: 10px solid transparent;
+      width: 0;
+      height: 0;
+      position: absolute;
+      border-top: none;
+      left: 2em;
+      z-index: 2;
+    }
+    &::after {
+      border-bottom-color: white;
+      top: -10px;
+    }
+    &::before {
+      border-bottom-color: #ccc;
+      top: -11px;
+    }
   }
 }
 </style>

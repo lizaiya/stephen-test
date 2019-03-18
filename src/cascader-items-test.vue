@@ -1,7 +1,8 @@
 <template>
-  <div class="cascader-menu" ref="cascaderMenu">
+  <div class="cascader-menu">
     <ul class="left">
-      <li v-for="(item,index) in items" :key="index" @click="onClickLabel(item)" :class="{ 'active-cascader-items': item.value===selected[level],'icon': item.children}" class="cascader-items">
+      <li v-for="(item,index) in items" :key="index" @click="onClickLabel(item)" :class="{
+        'active-cascader-items': item.value===selected[level],'icon': item.children}" class="cascader-items">
         <span>{{item.value}}</span>
       </li>
     </ul>
@@ -16,17 +17,21 @@ export default {
   },
   model:{
     prop:'selected',
-    event:'a'
+    event:'updateOptions'
   },
   props:{
     items:Array,
     selected:Array,
     level:{type:Number,default:0}
   },
-  computed: {
+  data(){
+    return {
+      loading:false
+    }
   },
   methods:{
     onClickLabel(item){
+      this.loading=true;
       let {level}=this;
       //没有子节点就关闭弹窗
      if(this.$listeners['active-item-change']){
@@ -43,22 +48,19 @@ export default {
      let  copySelected=JSON.parse(JSON.stringify(this.selected));
           copySelected[level]=item.value;
           copySelected.splice(level + 1)
-          this.$emit('a',copySelected)
+          this.$emit('updateOptions',copySelected)
     }
   }
 }
 </script>
-
 <style scoped lang="scss">
 .cascader-menu {
-  // position: absolute;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
   white-space: nowrap;
-  // height: 200px;
-  // overflow: auto;
-
+  position: relative;
+  overflow: auto;
   .left {
     min-width: 150px;
     padding: 5px 0;
