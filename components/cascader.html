@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>cascader | Stephen-ui</title>
+    <meta name="description" content="一个好用的框架">
+    
+    
+    <link rel="preload" href="/stephen-test/assets/css/0.styles.acb5b45a.css" as="style"><link rel="preload" href="/stephen-test/assets/js/app.66453a61.js" as="script"><link rel="preload" href="/stephen-test/assets/js/23.b4b8c383.js" as="script"><link rel="prefetch" href="/stephen-test/assets/js/1.08e5cbeb.js"><link rel="prefetch" href="/stephen-test/assets/js/10.7eeb4b08.js"><link rel="prefetch" href="/stephen-test/assets/js/11.e27c0412.js"><link rel="prefetch" href="/stephen-test/assets/js/12.70bddc51.js"><link rel="prefetch" href="/stephen-test/assets/js/13.dcf89b43.js"><link rel="prefetch" href="/stephen-test/assets/js/14.0bfcd050.js"><link rel="prefetch" href="/stephen-test/assets/js/15.52f410f6.js"><link rel="prefetch" href="/stephen-test/assets/js/16.8e40da6f.js"><link rel="prefetch" href="/stephen-test/assets/js/17.803ef821.js"><link rel="prefetch" href="/stephen-test/assets/js/18.18da26d1.js"><link rel="prefetch" href="/stephen-test/assets/js/19.3d171550.js"><link rel="prefetch" href="/stephen-test/assets/js/20.69733321.js"><link rel="prefetch" href="/stephen-test/assets/js/21.19f81aa8.js"><link rel="prefetch" href="/stephen-test/assets/js/22.30da1e31.js"><link rel="prefetch" href="/stephen-test/assets/js/24.efea5db2.js"><link rel="prefetch" href="/stephen-test/assets/js/25.754835d0.js"><link rel="prefetch" href="/stephen-test/assets/js/26.e57b4b95.js"><link rel="prefetch" href="/stephen-test/assets/js/27.ee1115c7.js"><link rel="prefetch" href="/stephen-test/assets/js/28.8b7d67e4.js"><link rel="prefetch" href="/stephen-test/assets/js/29.da49996b.js"><link rel="prefetch" href="/stephen-test/assets/js/3.c91674a6.js"><link rel="prefetch" href="/stephen-test/assets/js/30.dac2726c.js"><link rel="prefetch" href="/stephen-test/assets/js/31.0be03afd.js"><link rel="prefetch" href="/stephen-test/assets/js/32.2a05786a.js"><link rel="prefetch" href="/stephen-test/assets/js/33.ccc0b525.js"><link rel="prefetch" href="/stephen-test/assets/js/4.a8bfe753.js"><link rel="prefetch" href="/stephen-test/assets/js/5.351d9b7d.js"><link rel="prefetch" href="/stephen-test/assets/js/6.cf16ce00.js"><link rel="prefetch" href="/stephen-test/assets/js/7.cc060a17.js"><link rel="prefetch" href="/stephen-test/assets/js/8.7c34aa27.js"><link rel="prefetch" href="/stephen-test/assets/js/9.6b269b26.js">
+    <link rel="stylesheet" href="/stephen-test/assets/css/0.styles.acb5b45a.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/stephen-test/" class="home-link router-link-active"><!----> <span class="site-name">Stephen-ui</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><!---->  <ul class="sidebar-links"><li><div class="sidebar-group first collapsable"><p class="sidebar-heading"><span>入门</span> <span class="arrow right"></span></p> <!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading open"><span>组件</span> <span class="arrow down"></span></p> <ul class="sidebar-group-items"><li><a href="/stephen-test/components/layout.html" class="sidebar-link">Layout布局容器</a></li><li><a href="/stephen-test/components/grid.html" class="sidebar-link">栅格基础布局</a></li><li><a href="/stephen-test/components/button.html" class="sidebar-link">Button</a></li><li><a href="/stephen-test/components/input.html" class="sidebar-link">input</a></li><li><a href="/stephen-test/components/toast.html" class="sidebar-link">Toast</a></li><li><a href="/stephen-test/components/popover.html" class="sidebar-link">Popover</a></li><li><a href="/stephen-test/components/collapse.html" class="sidebar-link">Collapse</a></li><li><a href="/stephen-test/components/tabs.html" class="sidebar-link">Tabs</a></li><li><a href="/stephen-test/components/cascader.html" class="active sidebar-link">cascader</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/stephen-test/components/cascader.html#动态加载" class="sidebar-link">动态加载</a></li><li class="sidebar-sub-header"><a href="/stephen-test/components/cascader.html#options" class="sidebar-link">options</a></li><li class="sidebar-sub-header"><a href="/stephen-test/components/cascader.html#event" class="sidebar-link">Event</a></li></ul></li></ul></div></li></ul> </div> <div class="page"> <div class="content"><h1 id="层叠选择器"><a href="#层叠选择器" aria-hidden="true" class="header-anchor">#</a> 层叠选择器</h1> <p>Cascader</p> <!----> <div class="language- extra-class"><pre class="language-text"><code>&lt;s-cascader
+    :options=&quot;options&quot;
+    popper-class=&quot;abc&quot;
+    v-model=&quot;selected&quot;
+    @change=&quot;handleChange&quot;
+    separator=&quot;-&quot;
+    :show-all-levels=&quot;false&quot;
+    :change-on-select=&quot;false&quot;&gt;
+
+&lt;/s-cascader&gt;
+&lt;script&gt;
+
+let gdchildren=[
+  {
+                  value:'韶关',
+                  children:[
+                    {value:'武江'},
+                    {value:'浈江'},
+                    {value:'曲江'},
+                    {value:'始兴'},
+                    {value:'仁化'},
+                    {value:'翁源'},
+                    {value:'乳源'},
+                    {value:'新丰'},
+                    {value:'乐昌'},
+                    {value:'南雄'},
+                  ]
+                },
+                {
+                  value:'深圳',
+                  children:[
+                    {value:'罗湖'},
+                    {value:'福田'},
+                    {value:'南山'},
+                    {value:'宝安'},
+                    {value:'龙岗'},
+                    {value:'盐田'},
+                  ]
+                },
+                {
+                  value:'广州',
+                  children:[
+                    {value:'荔湾'},
+                    {value:'越秀'},
+                    {value:'海珠'},
+                    {value:'天河'},
+                    {value:'白云'},
+                    {value:'黄埔'},
+                    {value:'番禺'},
+                    {value:'花都'},
+                    {value:'南沙'},
+                    {value:'增城'},
+                    {value:'从化'},
+                  ]
+                },
+                {value:'珠海'},
+                {value:'汕头'},
+                {value:'佛山'},
+                {value:'江门'},
+                {value:'湛江'},
+                {value:'茂名'},
+                {value:'肇庆'},
+                {value:'惠州'},
+                {value:'梅州'}
+]
+let ahchildren=[
+  {
+                  value:'芜湖',
+                  children:[
+                    {value:'瑶海'},
+                    {value:'庐阳'},
+                    {value:'蜀山'},
+                    {value:'包河'},
+                    {value:'长丰'},
+                    {value:'肥东'},
+                    {value:'肥西'},
+                    {value:'庐江'},
+                    {value:'巢湖'},
+                  ]
+                },
+                {
+                  value:'安庆',
+                  children:[
+                    {value:'迎江'},
+                    {value:'大观'},
+                    {value:'宜秀'},
+                    {value:'怀宁'},
+                    {value:'枞阳'},
+                    {value:'潜山'},
+                    {value:'太湖'},
+                    {value:'宿松'},
+                    {value:'望江'},
+                    {value:'岳西'},
+                  ]
+                },
+                {value:'蚌埠'},
+                {value:'淮南'},
+                {value:'马鞍山'},
+                {value:'淮北'},
+                {value:'铜陵'},
+                {value:'黄山'},
+                {value:'滁州'},
+]
+let jschildren=[
+  {
+                  value:'南京',
+                  children:[
+                    {value:'玄武'},
+                    {value:'秦淮'},
+                    {value:'建邺'},
+                    {value:'鼓楼'},
+                    {value:'浦口'},
+                    {value:'栖霞'},
+                    {value:'雨花'},
+                    {value:'江宁'},
+                    {value:'六合'},
+                    {value:'溧水'},
+                    {value:'高淳'},
+                    {value:'梁溪'},
+                  ]
+                },
+                {
+                  value:'无锡',
+                  children:[
+                    {value:'梁溪'},
+                    {value:'新吴'},
+                    {value:'锡山'},
+                    {value:'惠山'},
+                    {value:'滨湖'},
+                    {value:'江阴'},
+                    {value:'宜兴'},
+                  ]
+                },
+                {value:'徐州'},
+                {value:'常州'},
+                {value:'苏州'},
+                {value:'南通'},
+                {value:'连云港'},
+                {value:'淮安'},
+                {value:'盐城'},
+                {value:'扬州'},
+]
+
+export default {
+   components:{
+       's-cascader':Cascader,
+   },
+   data(){
+     return {
+       options:[
+            {
+              value:'广东',
+              // children:[]
+              children:gdchildren
+            },
+            {
+              value:'安徽',
+              // children:[]
+               children:ahchildren
+            },
+            {
+              value:'江苏',
+              // children:[]
+               children:jschildren
+            }
+        ],
+        selected:['安徽','安庆','宿松'],
+     }
+   },
+   methods:{
+    handleChange(val){
+        console.log('change',val)
+    },
+   }
+}
+&lt;/script&gt;
+</code></pre></div><h2 id="动态加载"><a href="#动态加载" aria-hidden="true" class="header-anchor">#</a> 动态加载</h2> <p>需要监听active-item-change事件来实现动态加载
+<!----></p> <div class="language- extra-class"><pre class="language-text"><code> &lt;s-cascader
+ :options=&quot;options&quot;
+ popper-class=&quot;abc&quot;
+ @active-item-change=&quot;handleItemChange&quot;
+ v-model=&quot;selected&quot;
+ @change=&quot;handleChange&quot;
+ separator=&quot;-&quot;
+ :show-all-levels=&quot;false&quot;
+  :change-on-select=&quot;false&quot;&gt;
+    &lt;/s-cascader&gt;
+
+    &lt;script&gt;
+
+export default {
+   components:{
+       's-cascader':Cascader,
+   },
+   data(){
+     return {
+       options:[
+            {
+              value:'广东',
+              children:[]
+            },
+            {
+              value:'安徽',
+              children:[]
+            },
+            {
+              value:'江苏',
+              children:[]
+            }
+        ],
+        selected:[],
+     }
+   },
+   methods:{
+    handleChange(val){
+        console.log('change',val)
+      },
+      handleItemChange(val){
+        setTimeout(() =&gt; {
+            if (val.indexOf('广东') &gt; -1 &amp;&amp; !this.options[0].children.length) {
+              this.options[0].children = [{value: '广州',children:[{value:'白云区'}]}];
+            }
+            if (val.indexOf('安徽') &gt; -1 &amp;&amp; !this.options[1].children.length) {
+              this.options[1].children = [{value: '安庆'}];
+            }
+            if (val.indexOf('江苏') &gt; -1 &amp;&amp; !this.options[2].children.length) {
+              this.options[2].children = [{value: '南京'}];
+            }
+        }, 300);
+      }
+   }
+
+}
+&lt;/script&gt;
+</code></pre></div><h2 id="options"><a href="#options" aria-hidden="true" class="header-anchor">#</a> options</h2> <table><thead><tr><th>参数</th> <th style="text-align:center">说明</th> <th style="text-align:center">类型</th> <th style="text-align:center">可选值</th> <th style="text-align:center">默认值</th></tr></thead> <tbody><tr><td>popperClass</td> <td style="text-align:center">设置class</td> <td style="text-align:center">String</td> <td style="text-align:center">-</td> <td style="text-align:center">-</td></tr> <tr><td>showAllLevels</td> <td style="text-align:center">是否在输入框显示完整路径</td> <td style="text-align:center">Boolean</td> <td style="text-align:center">Boolean</td> <td style="text-align:center">true</td></tr> <tr><td>changeOnSelect</td> <td style="text-align:center">选择既改变输入框的值</td> <td style="text-align:center">Boolean</td> <td style="text-align:center">Boolean</td> <td style="text-align:center">false</td></tr> <tr><td>separator</td> <td style="text-align:center">分隔符</td> <td style="text-align:center">String</td> <td style="text-align:center">String</td> <td style="text-align:center">/</td></tr></tbody></table> <h2 id="event"><a href="#event" aria-hidden="true" class="header-anchor">#</a> Event</h2> <table><thead><tr><th>事件名称</th> <th style="text-align:center">说明</th> <th style="text-align:center">值</th></tr></thead> <tbody><tr><td>handleChange</td> <td style="text-align:center">值改变的时候触发</td> <td style="text-align:center">value</td></tr> <tr><td>handleItemChange</td> <td style="text-align:center">点击选项的时候触发</td> <td style="text-align:center">value</td></tr></tbody></table></div> <div class="page-edit"><!----> <!----></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/stephen-test/components/tabs.html" class="prev">
+          Tabs
+        </a></span> <!----></p></div> </div> <!----></div></div>
+    <script src="/stephen-test/assets/js/app.66453a61.js" defer></script><script src="/stephen-test/assets/js/23.b4b8c383.js" defer></script>
+  </body>
+</html>
