@@ -44,7 +44,6 @@ export default {
     //按钮 关闭和回调
     closeButton: {
       type: Object,
-
       defalut() {
         return { text: "关闭", callback: undefined };
       }
@@ -94,6 +93,7 @@ export default {
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 9999;
   &.position-top {
     top: 0;
     .toast {
@@ -125,16 +125,17 @@ export default {
     align-items: center;
     min-height: $toast-min-height;
     .message {
-      padding: 8px 12px 8px 8px;
+      padding: 0 12px 0 8px;
       flex-grow: 1;
-      //   border-right: 1px solid white;
+      color: white;
     }
     .close {
       position: relative;
-      padding: 8px 8px 8px 12px;
+      padding: 0 8px 0 12px;
       flex-shrink: 0;
       flex-grow: 0;
       cursor: pointer;
+      color: white;
     }
   }
 }

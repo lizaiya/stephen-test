@@ -1,12 +1,14 @@
+const path = require('path')
+
 module.exports = {
-    base:'/stephen-test/',
+    base: '/stephen-test/',
     title: 'Stephen-ui',
     description: '一个好用的框架',
+
     themeConfig: {
         sidebar: [
             {
                 title: '入门',
-                /* collapsable: false, */
                 children: [
                     '/install/',
                     '/get-started/',
@@ -23,12 +25,28 @@ module.exports = {
                     '/components/popover',
                     '/components/collapse',
                     '/components/tabs',
-
-
                 ]
             },
 
 
         ]
+    },
+    chainWebpack: (config, isServer) => {
+        const types = ['vue-modules', 'vue', 'normal-modules', 'normal']
+        types.forEach(type => addStyleResource(config.module.rule('scss').oneOf(type)))
+
+    },
+    scss: {
+        javascriptEnabled: true
     }
+}
+function addStyleResource (rule) {
+    rule.use('style-resource')
+        .loader('style-resources-loader')
+        .options({
+            patterns: [
+                path.resolve(__dirname, '../../src/styles/index.scss'), // 需要全局导入的less
+                // path.resolve(__dirname, '../../src/styles/mixin.less'),
+            ],
+        })
 }

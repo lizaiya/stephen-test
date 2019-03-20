@@ -3,12 +3,12 @@ module.exports = {
   configureWebpack: {
     devtool: 'source-map'
   },
- css: {
-      loaderOptions: {
-        sass: {
-          data: `@import "@/scss/index.scss";`
-        }
+  css: {
+    loaderOptions: {
+      sass: {
+        data: `@import "@/styles/index.scss";`
       }
     }
+  }
 }
 

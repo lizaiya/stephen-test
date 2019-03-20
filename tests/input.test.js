@@ -16,7 +16,7 @@ describe('Input', () => {
             vm.$destroy()
         })
         it('接收 value', () => {
-           vm = new Constructor({
+            vm = new Constructor({
                 propsData: {
                     value: '测试value接收值1'
                 }
@@ -56,27 +56,27 @@ describe('Input', () => {
     })
     describe('事件', () => {
         const Constructor = Vue.extend(Input);
-         let vm;
+        let vm;
         afterEach(function () {
             vm.$destroy()
         })
         it('触发change/input/focus/blur', () => {
-            ['change','input','focus','blur'].forEach((eventName)=>{
+            ['change', 'input', 'focus', 'blur'].forEach((eventName) => {
                 vm = new Constructor({}).$mount()
-                const callback=sinon.fake();
-                vm.$on(eventName,callback);
+                const callback = sinon.fake();
+                vm.$on(eventName, callback);
                 //触发input的change事件
-                let event=new Event(eventName);
+                let event = new Event(eventName);
                 //由于自定义event事件没有target属性，
                 //添加target属性
-                Object.defineProperty(event,'target',{value:{value:'hi'},enumerable:true})
-                let inputElement=vm.$el.querySelector('input');
+                Object.defineProperty(event, 'target', { value: { value: 'hi' }, enumerable: true })
+                let inputElement = vm.$el.querySelector('input');
                 inputElement.dispatchEvent(event);
                 expect(callback).to.have.been.calledWith('hi');
             })
-           
+
         })
-       
+
     })
 
 })

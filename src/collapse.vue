@@ -1,54 +1,62 @@
 <template>
-  <div class="collapse">
+  <div class="collapse" :selected="selected">
     <slot></slot>
   </div>
 </template>
-
 <script>
+ import Vue from 'vue'
 export default {
   name:"StepHenCollapse",
    model: {
-        prop: 'activeNames',
+        prop: 'selected',
         event: 'change'
    },
   props:{
-      activeNames:{
+      selected:{
           type:Array,
           required:true
       },
       single:{
           type:Boolean,
-          default:false
+          default:true
       }
+  },
+  provide (){
+    return {
+      eventBus: this.eventBus
+    }
   },
   data() {
     return {
-
+      eventBus:new Vue()
     }
   },
   mounted () {
-    this.$bus.$emit('update:selected',this.activeNames) //初始化选项子组件默认状态，
-       this.$bus.$on('addItem',(value)=>{ //添加选中子组件
-            let activeNamesCopy=JSON.parse(JSON.stringify(this.activeNames)) //深拷贝 不能修改props的值
-            if(this.single){
-                 activeNamesCopy=[value];
-             }else{
-                if(!(activeNamesCopy.indexOf(value)>=0)){
-                    activeNamesCopy.push(value)
-                }
-            }
-             this.$emit('change', activeNamesCopy)// 通知父组件 change事件
-            this.$bus.$emit('update:selected',activeNamesCopy) //分发消息给子组件 改变其状态
-        });
-        this.$bus.$on('removeItem',(value)=>{//移除选中子组件
-            let activeNamesCopy=JSON.parse(JSON.stringify(this.activeNames)) //深拷贝 不能修改props的值
-            let index=activeNamesCopy.indexOf(value);
-            activeNamesCopy.splice(index,1)
-            this.$emit('change', activeNamesCopy)// 通知父组件 change事件
-            this.$bus.$emit('update:selected',activeNamesCopy) //分发消息给子组件 改变其状态
-        });
+    //更新collapse-item的数据
+    this.eventBus.$emit('update:selected', this.selected)
+    this.eventBus.$on('update:addSelected',(name)=>{
+       let copySelected=JSON.parse(JSON.stringify(this.selected));
+     if(this.single){//单选
+      copySelected=[name]
+     }else{//多选
+      if(!(copySelected.indexOf(name)>=0)){
+         copySelected.push(name);
+      }
+     }
+     //更新collapse-item的数据
+     this.eventBus.$emit('update:selected',copySelected)
+     this.$emit('change',copySelected)
+    })
+    this.eventBus.$on('update:removeSelected',(name)=>{
+       let copySelected=JSON.parse(JSON.stringify(this.selected));
+       let index=copySelected.indexOf(name)
+       copySelected.splice(index,1)
+        //更新collapse-item的数据
+       this.eventBus.$emit('update:selected',copySelected)
+       //触发外界change
+       this.$emit('change',copySelected)
 
-
+    })
   }
 }
 </script>

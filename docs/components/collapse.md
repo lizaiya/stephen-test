@@ -7,3 +7,5 @@ sidebarDepth: 2
 
 使用方法
 
+<ClientOnly><callapse-demo></callapse-demo></ClientOnly>
+

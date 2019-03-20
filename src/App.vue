@@ -1,5 +1,12 @@
 <template>
   <div>
+    <s-collapse v-model="actives" @change="collapseChange" :single="true">
+      <s-collapse-item title="标题1" name="1">内容1</s-collapse-item>
+      <s-collapse-item title="标题2" name="2">内容2</s-collapse-item>
+      <s-collapse-item title="标题3" name="3">内容3</s-collapse-item>
+    </s-collapse>
+    {{actives}}
+    <s-button icon="settings" @click="showToast">弹窗</s-button>
     <div>
       {{selected}}
     </div>
@@ -17,6 +24,10 @@ change-on-select 是否选择既改变输入框的值 默认false
 @active-item-change 动态加载  show-all-levels只能是false, 没有子节点不能设置children元素
 */
 import Cascader from './cascader'
+import Button from './button'
+import Collapse from './collapse'
+import CollapseItem from './collapse-item'
+
 import Test from './test'
 let gdchildren=[
   {
@@ -153,9 +164,13 @@ export default {
     components: {
         's-cascader':Cascader,
         's-test':Test,
+        's-button':Button,
+        's-collapse':Collapse,
+        's-collapse-item':CollapseItem,
     },
     data(){
       return {
+        actives:['1'],
         options:[
             {
               value:'广东',
@@ -179,6 +194,23 @@ export default {
       }
     },
     methods:{
+      collapseChange(val){
+        // console.log(val);
+
+      },
+      showToast(){
+       this.$toast(`toast弹窗toast弹窗toast弹窗toast弹窗toast弹窗toast弹窗toast弹窗`, {
+                 autoClose: false,
+                 enableHtml: false,
+                 position: 'top'
+                 //  closeButton: {
+                 //      text: '关闭了',
+                 //      callback: () => {
+                 //          console.log('按钮关闭的');
+                 //      }
+                 //  },
+             });
+     },
       testChange(val){
         console.log(val)
       },
@@ -202,7 +234,10 @@ export default {
         }, 300);
       }
     },
+  created () {
+    console.log('111');
 
+  }
 
 }
 </script>
