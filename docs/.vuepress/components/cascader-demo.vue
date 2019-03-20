@@ -1,45 +1,15 @@
 <template>
   <div>
-    <s-tabs :selected="selectedTab">
-      <s-tabs-head>
-        <s-tabs-item name="video" disabled>视频课程</s-tabs-item>
-        <s-tabs-item name="audio">音频课程</s-tabs-item>
-        <s-tabs-item name="lecturer">讲师课程</s-tabs-item>
-        <template slot="opeart">
-          设置
-        </template>
-      </s-tabs-head>
-      <s-tabs-body>
-        <s-tabs-pane name="video">视频内容</s-tabs-pane>
-        <s-tabs-pane name="audio">音频内容</s-tabs-pane>
-        <s-tabs-pane name="lecturer">讲师内容</s-tabs-pane>
-      </s-tabs-body>
-    </s-tabs>
-    <div>
-      {{selected}}
-    </div>
-    <s-cascader :options="options" popper-class="abc" v-model="selected" @active-item-change="handleItemChange" @change="handleChange" separator="-" :show-all-levels="false" :change-on-select="true"></s-cascader>
+    <!--
+          @active-item-change="handleItemChange"
+           popper-class="abc"
+        -->
+    <s-cascader :options="options" popper-class="abc" v-model="selected" @change="handleChange" separator="-" :show-all-levels="false" :change-on-select="false">
+    </s-cascader>
   </div>
 </template>
 <script>
-/*
-show-all-levels 可以仅在输入框中显示选中项最后一级的标签，而不是选中项所在的完整路径
-true 显示所有路径
-false 显示最后一项路径
-
-change-on-select 是否选择既改变输入框的值 默认false
-
-@active-item-change 动态加载  show-all-levels只能是false, 没有子节点不能设置children元素
-*/
-import Cascader from './cascader'
-import Button from './button'
-import Tabs from './tabs'
-import TabsHead from './tabs-head'
-import TabsItem from './tabs-item'
-import TabsBody from './tabs-body'
-import TabsPane from './tabs-pane'
-
-import Test from './test'
+import Cascader from './cascader.vue';
 let gdchildren=[
   {
                   value:'韶关',
@@ -170,23 +140,14 @@ let jschildren=[
                 {value:'盐城'},
                 {value:'扬州'},
 ]
+
 export default {
-    name:'demo',
-    components: {
-        's-cascader':Cascader,
-        's-test':Test,
-        's-button':Button,
-        's-tabs':Tabs,
-        's-tabs-head':TabsHead,
-        's-tabs-item':TabsItem,
-        's-tabs-body':TabsBody,
-        's-tabs-pane':TabsPane
-    },
-    data(){
-      return {
-         selectedTab: 'lecturer',
-        actives:['1'],
-        options:[
+   components:{
+       's-cascader':Cascader,
+   },
+   data(){
+     return {
+       options:[
             {
               value:'广东',
               // children:[]
@@ -204,37 +165,13 @@ export default {
             }
         ],
         selected:['安徽','安庆','宿松'],
-
-
-      }
-    },
-    methods:{
-      collapseChange(val){
-        // console.log(val);
-
-      },
-      showToast(){
-       this.$toast(`toast弹窗toast弹窗toast弹窗toast弹窗toast弹窗toast弹窗toast弹窗`, {
-                 autoClose: false,
-                 enableHtml: false,
-                 position: 'top'
-                 //  closeButton: {
-                 //      text: '关闭了',
-                 //      callback: () => {
-                 //          console.log('按钮关闭的');
-                 //      }
-                 //  },
-             });
-     },
-      testChange(val){
-        console.log(val)
-      },
-      handleChange(val){
-      //  console.log('change',val)
+     }
+   },
+   methods:{
+    handleChange(val){
+        console.log('change',val)
       },
       handleItemChange(val){
-        // console.log('handleItemChange',val)
-        // console.log('active-item-change',val);
         setTimeout(() => {
             if (val.indexOf('广东') > -1 && !this.options[0].children.length) {
               this.options[0].children = [{value: '广州',children:[{value:'白云区'}]}];
@@ -245,18 +182,10 @@ export default {
             if (val.indexOf('江苏') > -1 && !this.options[2].children.length) {
               this.options[2].children = [{value: '南京'}];
             }
-          // console.log( this.options[0])
         }, 300);
       }
-    },
-  created () {
-    console.log('111');
-
-  }
+   }
 
 }
 </script>
-
-<style lang="scss" scoped>
-</style>
 

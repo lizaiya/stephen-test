@@ -1,11 +1,11 @@
 <template>
   <div>
-    <s-collapse :activeNames.sync="activeNames" :single="false">
+    <s-collapse v-model="activeNames" :single="false" @change="handlerChange">
       <s-collapse-item title="标题1" name="1">内容1</s-collapse-item>
       <s-collapse-item title="标题2" name="2">内容2</s-collapse-item>
       <s-collapse-item title="标题3" name="3">内容3</s-collapse-item>
     </s-collapse>
-    {{activeNames}}
+    <!-- {{activeNames}} -->
   </div>
 </template>
 <script>
@@ -23,8 +23,12 @@ export default {
      return {
        activeNames: ['1']
      }
+   },
+   methods:{
+    handlerChange(val){
+      console.log(val);
+    }
    }
-
 }
 </script>
 

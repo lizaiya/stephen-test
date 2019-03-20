@@ -1,20 +1,13 @@
 <template>
-  <div class="cascader-menu" ref="cascaderMenu">
-    <div>
-      {{level}}
-    </div>
-    <ul class="left" ref="left">
-      <li v-for="(item,index) in items" :key="index" @click="onClickLabel(item)" class="cascader-items" :class="{ 'active-cascader-items': item.value===$attrs.selected[level]}">
+  <div class="cascader-menu">
+    <ul class="left">
+      <li v-for="(item,index) in items" :key="index" @click="onClickLabel(item)" :class="{
+        'active-cascader-items': item.value===selected[level],'icon': item.children}" class="cascader-items">
         <span>{{item.value}}</span>
-        <s-icon name="right" v-if="item.children&&item.children.length"></s-icon>
       </li>
     </ul>
-    <div class="right" v-if="rightItems" ref="right">
-      <stephen-cascader-items :items="rightItems" :level="level+1" v-on="$listeners" v-bind="$attrs"></stephen-cascader-items>
-    </div>
   </div>
 </template>
-
 <script>
 import Icon from "@/icon"
 export default {
@@ -22,59 +15,66 @@ export default {
   components:{
     's-icon':Icon
   },
+  model:{
+    prop:'selected',
+    event:'updateOptions'
+  },
   props:{
     items:Array,
+    selected:Array,
     level:{type:Number,default:0}
   },
-  computed:{
-   rightItems(){
-      if(this.$attrs.selected[this.level]){
-          let selected = this.items.filter((item) => item.value === this.$attrs.selected[this.level])
-          if (selected && selected[0].children && selected[0].children.length > 0) {
-            return selected[0].children
-          }
-      }
+  data(){
+    return {
+      loading:false
     }
   },
-  inheritAttrs:false,
   methods:{
     onClickLabel(item){
-     this.$bus.$emit('xxx',123)
-     if(!item.children||!item.children.length){
-      console.log('没有子元素 关闭弹出层');
+      this.loading=true;
+      let {level}=this;
+      //没有子节点就关闭弹窗
+     if(this.$listeners['active-item-change']){
+        //动态添加次级选项
+        if(!item.children){
+          this.$emit("updateVisibility")
+        }
+     }else{
+         if(!item.children|| !item.children.length){
+            this.$emit("updateVisibility")
+          }
       }
-      let copy=JSON.parse(JSON.stringify(this.$attrs.selected));
-      copy[this.level]=item.value;
-      copy.splice(this.level + 1)
-      if(this.$attrs.selected[this.level]!==item.value){
-        //触发祖先的change事件
-        this.$listeners.change(copy)
-      }
-     },
-  },
-  mounted(){
-
-
+     //深拷贝 不能改变父组件的props
+     let  copySelected=JSON.parse(JSON.stringify(this.selected));
+          copySelected[level]=item.value;
+          copySelected.splice(level + 1)
+          this.$emit('updateOptions',copySelected)
+    }
   }
-
 }
 </script>
-
 <style scoped lang="scss">
 .cascader-menu {
-  position: absolute;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
   white-space: nowrap;
-  // height: 200px;
-  // overflow: auto;
-
+  position: relative;
+  overflow: auto;
   .left {
     min-width: 150px;
     padding: 5px 0;
     .cascader-items {
       padding: 8px 20px;
+      position: relative;
+      &.icon:before {
+        position: absolute;
+        right: 1em;
+        font-family: 'stephen';
+        content: '\e60c';
+        top: 50%;
+        transform: translateY(-50%);
+      }
       &.active-cascader-items {
         color: #409eff;
       }
@@ -85,8 +85,8 @@ export default {
       }
     }
   }
-  .right {
-    border-left: 1px solid $border-color-light;
-  }
+}
+.cascader-menu + .cascader-menu {
+  border-left: 1px solid $border-color-light;
 }
 </style>

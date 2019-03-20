@@ -8,10 +8,8 @@
   </div>
 </template>
 <script>
-import CascaderItem from '@/cascader-items'
-import Input from '@/input'
-import ClickOutside from '@/click-outside'
-import Test from './test'
+import CascaderItem from './cascader-items'
+import ClickOutside from './click-outside'
 export default {
   name:"StepHenCascader",
   directives: {
@@ -19,13 +17,12 @@ export default {
   },
   components:{
    's-cascader-item':CascaderItem,
-   's-input':Input
   },
   model:{
     prop:'selected',
     event:'change'
   },
-    data() {
+  data() {
     return {
       childrenSelected:[],
       visibility:false,
@@ -182,7 +179,7 @@ export default {
     display: flex;
     margin-top: 15px;
     z-index: 1;
-    min-height: 150px;
+    max-height: auto;
     @extend .box-shadow;
     &::before,
     &::after {

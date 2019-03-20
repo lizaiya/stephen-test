@@ -13,6 +13,7 @@ export default {
       type: String,
       required: true
     },
+    //禁用
     disabled: {
       type: Boolean,
       default: false
@@ -33,7 +34,6 @@ export default {
       if (!this.disabled) {
         //禁止按钮
         this.$bus.$emit("update:selected", this.name, this);
-        // this.$emit("update:selected", this.selected);
       }
     }
   },

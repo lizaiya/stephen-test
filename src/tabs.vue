@@ -1,10 +1,8 @@
 <template>
   <div class="tabs">
     <slot></slot>
-
   </div>
 </template>
-
 <script>
 import Vue from "vue";
 export default {
@@ -22,11 +20,9 @@ export default {
       }
     }
   },
-
   data() {
     return {};
   },
-
   mounted() {
     if (this.$children.length === 0) {
       console &&

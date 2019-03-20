@@ -32,22 +32,6 @@ export default{
         visibility: false
       }
     },
-  //     computed: {
-  //  openEvent(){
-  //    if(this.trigger==='click'){
-  //      return 'click'
-  //    }else{
-  //      return 'mouseenter'
-  //    }
-  //  },
-  //  closeEvent(){
-  //    if(this.trigger==='click'){
-  //      return 'click'
-  //    }else{
-  //      return 'mouseleave'
-  //    }
-  //  }
-  // },
     methods: {
       onClick(e) {
         if (this.$refs.triggerWrapper.contains(event.target)){
@@ -125,6 +109,7 @@ export default{
   padding: 0.5em 1em;
   max-width: 20em;
   word-break: break-all;
+  z-index: 99;
   &::before,
   &::after {
     content: '';

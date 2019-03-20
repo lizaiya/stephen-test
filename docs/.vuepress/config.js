@@ -1,5 +1,4 @@
 const path = require('path')
-
 module.exports = {
     base: '/stephen-test/',
     title: 'Stephen-ui',
@@ -25,16 +24,14 @@ module.exports = {
                     '/components/popover',
                     '/components/collapse',
                     '/components/tabs',
+                    '/components/cascader',
                 ]
-            },
-
-
+            }
         ]
     },
     chainWebpack: (config, isServer) => {
         const types = ['vue-modules', 'vue', 'normal-modules', 'normal']
         types.forEach(type => addStyleResource(config.module.rule('scss').oneOf(type)))
-
     },
     scss: {
         javascriptEnabled: true
@@ -46,7 +43,6 @@ function addStyleResource (rule) {
         .options({
             patterns: [
                 path.resolve(__dirname, '../../src/styles/index.scss'), // 需要全局导入的less
-                // path.resolve(__dirname, '../../src/styles/mixin.less'),
             ],
         })
 }

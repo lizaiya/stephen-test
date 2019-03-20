@@ -9,12 +9,8 @@
   </div>
 </template>
 <script>
-import Icon from "@/icon"
 export default {
-  name:"StephenCascaderItemsTest",
-  components:{
-    's-icon':Icon
-  },
+  name:"StephenCascaderItems",
   model:{
     prop:'selected',
     event:'updateOptions'
@@ -61,6 +57,7 @@ export default {
   white-space: nowrap;
   position: relative;
   overflow: auto;
+
   .left {
     min-width: 150px;
     padding: 5px 0;
