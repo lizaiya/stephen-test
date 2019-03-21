@@ -1,11 +1,9 @@
 <template>
   <div>
-    <!--
-          @active-item-change="handleItemChange"
-           popper-class="abc"
-        -->
-    <s-cascader :options="options" popper-class="abc" v-model="selected" @change="handleChange" separator="-" :show-all-levels="false" :change-on-select="false">
+
+    <s-cascader :options="options" popper-class="abc" v-model="selected" @change="handleChange" separator="-" :show-all-levels="false" :change-on-select="true">
     </s-cascader>
+
   </div>
 </template>
 <script>

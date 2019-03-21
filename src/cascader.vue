@@ -181,7 +181,7 @@ export default {
     background: white;
     display: flex;
     margin-top: 15px;
-    z-index: 1;
+    z-index: 99;
     min-height: 150px;
     @extend .box-shadow;
     &::before,

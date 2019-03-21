@@ -8,6 +8,7 @@ sidebarDepth: 2
 Cascader
 
 <ClientOnly><cascader-demo></cascader-demo></ClientOnly>
+
 ```
 <s-cascader
     :options="options"
@@ -181,10 +182,8 @@ export default {
    methods:{
     handleChange(val){
         console.log('change',val)
-      },
-
+    },
    }
-
 }
 </script>
 ```
