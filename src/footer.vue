@@ -8,7 +8,7 @@ export default {
     name:"StephenFooter",
     data(){
       return {
-      abd:456
+        abc:'123'
       }
     }
 }
