@@ -5,7 +5,12 @@
 </template>
 <script>
 export default {
-    name:"StephenFooter"
+    name:"StephenFooter",
+    data(){
+      return {
+      abd:456
+      }
+    }
 }
 </script>
 <style lang="scss" scoped>
